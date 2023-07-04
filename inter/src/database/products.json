@@ -1,0 +1,36 @@
+{
+  "inters": [
+    {
+      "id": 1,
+      "name": "Tuan ",
+      "gender": 0,
+      "email": "tinhqqq@gmail.com",
+      "phone": "222423",
+      "address": "Ha Noi"
+    },
+    {
+      "name": "Anh",
+      "gender": 0,
+      "email": "anh@gmail.com",
+      "phone": "123456",
+      "address": "Thanh Hoa",
+      "id": 2
+    },
+    {
+      "name": "w",
+      "gender": 1,
+      "email": "12@ss.com",
+      "phone": "12",
+      "address": "as",
+      "id": 3
+    },
+    {
+      "name": "sa",
+      "gender": 1,
+      "email": "sa@g.com",
+      "phone": "1111",
+      "address": "asasas",
+      "id": 4
+    }
+  ]
+}
