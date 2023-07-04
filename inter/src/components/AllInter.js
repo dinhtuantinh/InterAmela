@@ -12,9 +12,7 @@ const AllInter = () => {
     }, [])
 
     const getInter = async () =>{
-        console.log("nodata");
         const response = await getAllInter();
-        console.log(response);
         setInter(response.data);
     }
 
@@ -22,7 +20,7 @@ const AllInter = () => {
         await deleteInter(id);
         getInter();
     }
-    
+
     return (
         <Table className="table">
             <TableHead>

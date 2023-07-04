@@ -34,10 +34,7 @@ const EditInter = () => {
 
     const onValueChange = (e) =>
     {
-      //  console.log(e);
-      // console.log(e.target.value);
       setInter({...inter, [e.target.name]: e.target.value});
-        console.log(inter);
     }
 
     const editInterDetails = async () =>{
