@@ -12,9 +12,7 @@ const AllInter = () => {
     }, [])
 
     const getInter = async () =>{
-        console.log("nodata");
         const response = await getAllInter();
-        console.log(response);
         setInter(response.data);
     }
 
@@ -22,7 +20,7 @@ const AllInter = () => {
         await deleteInter(id);
         getInter();
     }
-    
+
     return (
         <Table className="table">
             <TableHead>
@@ -38,17 +36,17 @@ const AllInter = () => {
             </TableHead>
             <TableBody>
             {
-                inter.map((data) => (
-                    <TableRow className="trow">
-                        <TableCell>{data.id}</TableCell>
-                        <TableCell>{data.name}</TableCell>
-                        <TableCell>{data.gender===0?"Nam":data.gender===1?"Nữ":"Khác"}</TableCell>
-                        <TableCell>{data.email}</TableCell>
-                        <TableCell>{data.phone}</TableCell>
-                        <TableCell>{data.address}</TableCell>
+                inter.map((item, index) => (
+                    <TableRow className="trow" key={index}>
+                        <TableCell>{item.id}</TableCell>
+                        <TableCell>{item.name}</TableCell>
+                        <TableCell>{item.gender===0?"Nam":item.gender===1?"Nữ":"Khác"}</TableCell>
+                        <TableCell>{item.email}</TableCell>
+                        <TableCell>{item.phone}</TableCell>
+                        <TableCell>{item.address}</TableCell>
                         <TableCell>
-                            <Button variant="contained" color="primary" className="btn-edit" component={Link} to={`/edit/${data.id}`}>Edit</Button>
-                            <Button variant="contained" color="secondary" onClick={() => deleteData(data.id)}>Delete</Button>
+                            <Button variant="contained" color="primary" className="btn-edit" component={Link} to={`/edit/${item.id}`}>Edit</Button>
+                            <Button variant="contained" color="secondary" onClick={() => deleteData(item.id)}>Delete</Button>
                         </TableCell>
                     </TableRow>
                 ))
