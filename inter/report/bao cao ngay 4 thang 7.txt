@@ -1,0 +1,378 @@
+1. HTTP
+	1.1. HTTP 
+		HTTP (Hypertext Transfer Protocol) là một giao thức truyền tải dữ liệu trên mạng. 
+	Nó được sử dụng để truyền thông tin giữa máy khách (client) và máy chủ (server) thông 
+	qua Internet.
+
+		Các yêu cầu HTTP được gửi từ máy khách đến máy chủ và bao gồm các phương thức như 
+	GET, POST, PUT, DELETE, vv. Mỗi yêu cầu gồm một tiêu đề (header) chứa thông tin về 
+	yêu cầu và một thân (body) chứa dữ liệu gửi đi (nếu có). Máy chủ xử lý yêu cầu và trả 
+	về phản hồi (response) chứa thông tin kết quả hoặc dữ liệu được yêu cầu.
+
+		Các thành phần chính của một yêu cầu HTTP bao gồm:
+
+			URL (Uniform Resource Locator): Địa chỉ xác định tài nguyên trên máy chủ mà yêu cầu 
+		đang được gửi đến.
+			Phương thức (Method): Xác định hành động mà yêu cầu muốn thực hiện trên tài nguyên, 
+		ví dụ như GET (lấy thông tin), POST (gửi dữ liệu), PUT (cập nhật dữ liệu), DELETE 
+		(xóa dữ liệu), vv.
+			Tiêu đề (Header): Chứa thông tin bổ sung về yêu cầu như loại dữ liệu, thông tin xác 
+		thực, ngôn ngữ, vv.
+			Thân (Body): Dữ liệu gửi kèm theo yêu cầu, thường được sử dụng trong các phương thức 
+		như POST hoặc PUT.
+			Các phản hồi HTTP từ máy chủ cũng bao gồm tiêu đề và thân tương tự như yêu cầu, nhưng 
+		chúng chứa thông tin về kết quả hoặc dữ liệu được yêu cầu.
+
+		Trong lập trình web, HTTP thường được sử dụng để truy cập và tương tác với các 
+	API (Application Programming Interface) để lấy dữ liệu từ máy chủ, gửi dữ liệu 
+	đến máy chủ và thực hiện các thao tác khác nhau trên dữ liệu. Các thư viện như 
+	Axios, Fetch API trong JavaScript và các framework như ReactJS cung cấp các công 
+	cụ hỗ trợ cho việc thực hiện yêu cầu HTTP.
+	1.2. HTTP trong ReactJS
+		Trong ReactJS, để thực hiện các yêu cầu HTTP, chúng ta có thể sử dụng các thư 
+	viện như Axios, Fetch API hoặc sử dụng các hàm có sẵn trong JavaScript như fetch() 
+	để gửi yêu cầu HTTP. 
+	1.3. Ví dụ HTTP trong ReactJS
+		1.3.1 Với Axios
+			Sử dụng Axios để thực hiện yêu cầu HTTP: Trong Component, có thể sử dụng 
+		Axios trong các phương thức lifecycle hoặc các hàm xử lý sự kiện để gửi yêu cầu 
+		HTTP.
+			Ví dụ:
+			
+			import React, { useEffect, useState } from 'react';
+			import axios from 'axios';
+
+			function MyComponent() {
+			  const [data, setData] = useState([]);
+
+			  useEffect(() => {
+				axios.get('https://api.example.com/data')
+				  .then(response => {
+					setData(response.data);
+				  })
+				  .catch(error => {
+					console.error('Error fetching data:', error);
+				  });
+			  }, []);
+
+			  return (
+				<div>
+				  {data.map(item => (
+					<p key={item.id}>{item.name}</p>
+				  ))}
+				</div>
+			  );
+			}
+
+			export default MyComponent;
+
+			Sử dụng useEffect để thực hiện yêu cầu GET khi Component được render. Trong useEffect, 
+		Sử dụng Axios để gửi yêu cầu GET đến https://api.example.com/data. Sau khi nhận được phản 
+		hồi từ API, sẽ cập nhật state data bằng dữ liệu trả về từ yêu cầu HTTP. Sau đó, hiển thị 
+		danh sách các mục dữ liệu bằng cách lặp qua mảng data và hiển thị tên của mỗi mục.
+			
+		1.3.2 Với Fetch API
+			
+			import React, { useEffect, useState } from 'react';
+
+			function MyComponent() {
+			  const [data, setData] = useState([]);
+
+			  useEffect(() => {
+				fetchData();
+			  }, []);
+
+			  const fetchData = () => {
+				fetch('https://api.example.com/data')
+				  .then(response => response.json())
+				  .then(data => {
+					setData(data);
+				  })
+				  .catch(error => {
+					console.error('Error fetching data:', error);
+				  });
+			  };
+
+			  return (
+				<div>
+				  {data.map(item => (
+					<p key={item.id}>{item.name}</p>
+				  ))}
+				</div>
+			  );
+			}
+
+			export default MyComponent;
+			
+			Sử dụng useEffect để gọi hàm fetchData khi Component được render. Trong fetchData, sẽ sử 
+			dụng Fetch API để gửi yêu cầu GET đến https://api.example.com/data. Sau khi nhận được 
+			phản hồi từ API, chúng ta chuyển đổi phản hồi thành đối tượng JSON bằng cách gọi .json() 
+			trên đối tượng phản hồi. Sau đó, chúng ta cập nhật state data bằng dữ liệu trả về từ yêu 
+			cầu HTTP. Cuối cùng, chúng ta hiển thị danh sách các mục dữ liệu bằng cách lặp qua mảng 
+			data và hiển thị tên của mỗi mục.
+
+2. Browsers
+	2.1 Browsers
+		Browsers (trình duyệt) là các phần mềm được sử dụng để duyệt và hiển thị nội dung trên Internet. 
+	Chúng cho phép người dùng truy cập vào các trang web, xem, tương tác và tải xuống các tài nguyên như 
+	văn bản, hình ảnh, video, tệp tin, vv. Một số trình duyệt phổ biến bao gồm Google Chrome, Mozilla 
+	Firefox, Microsoft Edge, Safari và Opera.
+
+		Các trình duyệt cung cấp một giao diện người dùng đồ họa, cho phép người dùng nhập địa chỉ web 
+	(URL) hoặc tìm kiếm để truy cập vào trang web mong muốn. Khi người dùng yêu cầu truy cập vào một 
+	trang web, trình duyệt gửi yêu cầu HTTP đến máy chủ chứa trang web đó và nhận lại các tệp tin và dữ 
+	liệu tương ứng. Sau đó, trình duyệt hiển thị nội dung được trả về cho người dùng.
+
+		Trình duyệt thực hiện một số chức năng quan trọng như:
+
+			Hiển thị các thành phần của trang web như văn bản, hình ảnh, video, các yếu tố  định dạng như CSS, 
+		JavaScript và các yếu tố khác.
+			Đảm bảo tương thích với các tiêu chuẩn web như HTML (HyperText Markup Language), CSS (Cascading 
+		Style Sheets) và JavaScript.
+			Thực hiện các tác vụ liên quan đến an ninh như kiểm tra tính toàn vẹn của trang web, cảnh báo người 
+		dùng về các trang web không an toàn.
+			Hỗ trợ các tính năng tương tác như điều hướng, gửi biểu mẫu, lưu trữ cookie, và xử lý sự kiện như 
+		nhấp chuột, nhập liệu từ bàn phím.
+			Trình duyệt cũng hỗ trợ các công cụ phát triển như bộ kiểm tra phần mềm (Developer Tools), cho phép 
+		nhà phát triển web kiểm tra, gỡ lỗi và tối ưu hóa trang web.
+
+		Mỗi trình duyệt có một công nghệ và tính năng riêng, nhưng chúng đều tuân thủ các tiêu chuẩn web để đảm 
+	bảo tương thích và hiển thị đúng nội dung trên các trang web khác nhau.
+	
+	2.2 Browsers với ReactJS
+		Trong ReactJS, khi bạn xây dựng ứng dụng web, trình duyệt (browser) là môi trường mà ứng dụng của bạn chạy. 
+	ReactJS sử dụng JavaScript để tạo ra các thành phần giao diện người dùng và tương tác với DOM (Document Object 
+	Model) trong trình duyệt để hiển thị nội dung và xử lý sự kiện.
+
+		ReactJS không phụ thuộc vào một trình duyệt cụ thể nào, mà là một thư viện JavaScript chạy trên môi trường 
+	trình duyệt. Điều này có nghĩa là ứng dụng ReactJS của bạn có thể chạy trên nhiều trình duyệt khác nhau như 
+	Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera, vv.
+
+		Khi bạn phát triển ứng dụng ReactJS, bạn cần đảm bảo rằng mã JavaScript của bạn tương thích với các trình 
+	duyệt phổ biến và tuân thủ các tiêu chuẩn web như HTML, CSS và JavaScript. ReactJS giúp bạn xây dựng giao diện 
+	người dùng linh hoạt và hiệu quả, nhưng việc hiển thị và tương tác với nội dung được xử lý bởi trình duyệt.
+
+		Ngoài ra, trong quá trình phát triển, trình duyệt cũng cung cấp các công cụ phát triển như bộ kiểm tra phần 
+	mềm (Developer Tools) giúp bạn kiểm tra, gỡ lỗi và tối ưu hóa ứng dụng ReactJS của mình. Các công cụ này cung 
+	cấp các tính năng như kiểm tra DOM, xem các yếu tố React, xem log, xem các yêu cầu mạng, và nhiều tính năng khác 
+	để giúp phát triển ứng dụng một cách hiệu quả.
+	
+	2.3 Ví dụ Browsers với ReactJS
+		Sử dụng ReactJS để hiển thị một danh sách các phần tử và render trong trình duyệt:
+		
+			import React from 'react';
+
+			function BrowserExample() {
+			  const items = ['Item 1', 'Item 2', 'Item 3'];
+
+			  return (
+				<div>
+				  <h1>Browser Example</h1>
+				  <ul>
+					{items.map((item, index) => (
+					  <li key={index}>{item}</li>
+					))}
+				  </ul>
+				</div>
+			  );
+			}
+
+			export default BrowserExample;
+			
+		Trong ví dụ trên, chúng ta có một component ReactJS đơn giản là BrowserExample. Component này hiển thị một 
+	tiêu đề và danh sách các phần tử trong trình duyệt.
+
+		Trong hàm render() của component, chúng ta tạo một mảng items chứa các phần tử cần hiển thị. Sau đó, chúng 
+	ta sử dụng phương thức map() của mảng để tạo các phần tử li trong danh sách. Mỗi phần tử trong mảng items được 
+	hiển thị trong một phần tử li riêng biệt và có thuộc tính key là index để đảm bảo tính duy nhất và hiệu suất 
+	khi render.
+
+		Cuối cùng, chúng ta render component BrowserExample trong DOM của trình duyệt bằng cách sử dụng ReactDOM:
+		
+			import React from 'react';
+			import ReactDOM from 'react-dom';
+			import BrowserExample from './BrowserExample';
+
+			ReactDOM.render(<BrowserExample />, document.getElementById('root'));
+
+		Trong ví dụ trên, chúng ta sử dụng ReactDOM.render() để render component BrowserExample vào một phần tử có 
+	id là root trong DOM của trình duyệt.
+
+		Khi chạy ứng dụng, bạn sẽ thấy tiêu đề "Browser Example" và danh sách các phần tử trong trình duyệt.
+
+3. DNS
+	3.1 DNS
+	
+		DNS (Domain Name System) là hệ thống phân giải tên miền được sử dụng trên Internet để ánh xạ các tên miền 
+	(như example.com) sang địa chỉ IP tương ứng (như 192.0.2.1). DNS giúp các máy tính và trình duyệt hiểu được địa 
+	chỉ IP của máy chủ mà tài nguyên trên Internet được lưu trữ và truy cập.
+
+		Khi bạn nhập một địa chỉ URL vào trình duyệt, ví dụ "https://www.example.com", trình duyệt sẽ gửi yêu cầu 
+	đến máy chủ DNS để lấy địa chỉ IP tương ứng với tên miền "www.example.com". Máy chủ DNS sẽ tìm kiếm trong cơ 
+	sở dữ liệu của mình để tìm địa chỉ IP và trả về cho trình duyệt.
+
+		DNS sử dụng cấu trúc phân cấp với các máy chủ DNS phân tán trên toàn cầu. Khi một máy chủ DNS không thể 
+	giải quyết tên miền, nó sẽ truy vấn máy chủ DNS cao hơn trong cấu trúc phân cấp. Quá trình này tiếp tục cho 
+	đến khi tìm thấy máy chủ DNS cuối cùng có thể giải quyết tên miền và trả về kết quả.
+
+		DNS đóng vai trò quan trọng trong việc giúp trình duyệt và các ứng dụng Internet xác định địa chỉ IP của 
+	máy chủ và tài nguyên mà người dùng muốn truy cập. Nó giúp xác định đúng địa chỉ IP của máy chủ web, máy chủ 
+	email, máy chủ FTP, vv., từ tên miền được sử dụng trong các địa chỉ URL.
+	
+	3.2 DNS với ReactJS
+		
+		Trong ReactJS, DNS (Domain Name System) không được trực tiếp liên quan đến việc phát triển ứng dụng. DNS 
+	là một phần của hạ tầng Internet và đóng vai trò trong quá trình phân giải tên miền thành địa chỉ IP.
+
+		Khi phát triển ứng dụng ReactJS, bạn thường không phải lo lắng về DNS. ReactJS tập trung vào việc xây dựng 
+	giao diện người dùng và quản lý logic ứng dụng, trong khi DNS được quản lý bởi hệ thống Internet.
+
+		Khi bạn sử dụng ReactJS để phát triển ứng dụng web, bạn chỉ cần chú ý đến các URL tương đối hoặc tuyệt đối 
+	mà ứng dụng của bạn sử dụng để truy cập vào các tài nguyên như hình ảnh, dữ liệu API, hoặc các trang khác. Các 
+	URL này có thể sử dụng tên miền đầy đủ (ví dụ: www.example.com) hoặc địa chỉ IP trực tiếp của máy chủ (ví dụ: 
+	192.0.2.1).
+
+		Khi ứng dụng của bạn chạy trên trình duyệt, quá trình phân giải tên miền thành địa chỉ IP sẽ được trình duyệt 
+	và hệ thống DNS trong môi trường trình duyệt xử lý tự động. Bạn không cần phải can thiệp vào quá trình này khi sử 
+	dụng ReactJS.
+
+		Tóm lại, DNS là một phần quan trọng của việc truyền thông trên Internet, nhưng không có mối liên kết trực tiếp 
+	giữa DNS và việc phát triển ứng dụng ReactJS. Bạn có thể tập trung vào việc phát triển giao diện người dùng và xử 
+	lý logic ứng dụng mà không cần quan tâm đến DNS.
+	
+	3.3 Ví dụ DNS với ReactJS
+	
+		import React from 'react';
+
+		function App() {
+		  return (
+			<div>
+			  <h1>My React App</h1>
+			  <a href="https://www.example.com">Visit Example Website</a>
+			</div>
+		  );
+		}
+
+		export default App;
+		
+		Trong ví dụ trên, chúng ta có một component ReactJS đơn giản là App. Component này hiển thị một tiêu đề và một 
+	liên kết "Visit Example Website" với địa chỉ URL là "https://www.example.com".
+
+		Khi liên kết được nhấp vào, trình duyệt sẽ xử lý quá trình phân giải tên miền và chuyển hướng người dùng đến địa 
+	chỉ IP tương ứng của tên miền "www.example.com". Quá trình này diễn ra tự động bởi trình duyệt và hệ thống DNS.
+
+4. Domain name
+	4.1. Domain name
+		
+		Domain name (tên miền) là một chuỗi ký tự được sử dụng để định danh một địa chỉ duy nhất trên Internet. Nó được 
+	sử dụng để xác định một trang web, một địa chỉ email, một dịch vụ trực tuyến hoặc một nguồn tài nguyên khác trên mạng.
+
+		Tên miền được chia thành các thành phần, được phân tách bằng dấu chấm (.), ví dụ: example.com. Phần sau dấu chấm 
+	cuối cùng (ví dụ: .com, .net, .org) được gọi là domain extension (phần mở rộng tên miền) hoặc top-level domain (TLD). 
+	Các phần trước đó (ví dụ: example) được gọi là domain name (tên miền).
+
+		Domain name giúp con người dễ dàng nhớ và truy cập các địa chỉ trên Internet. Khi người dùng nhập tên miền vào 
+	trình duyệt, hệ thống DNS sẽ phân giải tên miền thành địa chỉ IP tương ứng để truy cập đúng đích.
+
+		Một số ví dụ về tên miền:
+
+			example.com: Tên miền của một trang web thông thường.
+			google.com: Tên miền của công ty Google.
+			microsoft.com: Tên miền của công ty Microsoft.
+			gmail.com: Tên miền của dịch vụ email Gmail của Google.
+			wikipedia.org: Tên miền của trang web Wikipedia.
+			
+		Quá trình đăng ký và quản lý tên miền được thực hiện thông qua các nhà đăng ký tên miền (domain registrar). Người 
+	dùng có thể mua, đăng ký và quản lý tên miền của họ thông qua các nhà đăng ký uy tín.
+
+		Tên miền đóng vai trò quan trọng trong việc xác định địa chỉ trang web, dịch vụ trực tuyến và nguồn tài nguyên khác 
+	trên Internet.
+
+	4.2. Domain name với ReactJS
+		Trong ReactJS, việc sử dụng domain name (tên miền) liên quan đến việc xác định các URL cho các tài nguyên như hình 
+	ảnh, dữ liệu API hoặc trang web khác. Các domain name thường được sử dụng để xác định nơi lưu trữ các tài nguyên và xác 
+	định địa chỉ mà ứng dụng của bạn cần tương tác.
+		Khi ứng dụng chạy, các URL sẽ được tạo ra sử dụng domain name đã khai báo, và trình duyệt sẽ tương tác với các tài 
+	nguyên và trang web tương ứng trên domain đó.
+	
+	4.3. Ví dụ Domain name với ReactJS
+	
+		import React from 'react';
+
+		function App() {
+		  const domainName = 'https://www.example.com';
+
+		  return (
+			<div>
+			  <h1>My React App</h1>
+			  <img src={`${domainName}/images/logo.png`} alt="Logo" />
+			  <a href={`${domainName}/about`}>About</a>
+			  <a href={`${domainName}/contact`}>Contact</a>
+			</div>
+		  );
+		}
+
+		export default App;
+		
+		Trong ví dụ trên, chúng ta có một component ReactJS đơn giản là App. Component này hiển thị một tiêu đề và sử dụng domain 
+	name "https://www.example.com" để xác định các URL cho hình ảnh và các liên kết.
+
+		Đối với hình ảnh, chúng ta sử dụng thuộc tính src của thẻ <img> và ghép domain name với đường dẫn của hình ảnh, ví dụ 
+	${domainName}/images/logo.png.
+
+		Đối với các liên kết, chúng ta sử dụng thuộc tính href của thẻ <a> và ghép domain name với các đường dẫn tương ứng, 
+	ví dụ ${domainName}/about và ${domainName}/contact.
+
+5. Hosting
+	5.1 Hosting
+
+		Hosting (lưu trữ) là quá trình đặt và duy trì một ứng dụng, trang web hoặc dịch vụ trực tuyến trên một máy chủ từ xa để nó 
+	có thể được truy cập và sử dụng thông qua Internet. Trong viễn cảnh của ReactJS, hosting là quá trình triển khai ứng dụng ReactJS 
+	lên một máy chủ để có thể truy cập từ trình duyệt web.
+
+		Có nhiều nhà cung cấp hosting khác nhau mà bạn có thể sử dụng để triển khai ứng dụng ReactJS. Dưới đây là một số ví dụ về các 
+	dịch vụ hosting phổ biến:
+
+			Netlify (https://www.netlify.com): Dịch vụ hosting tĩnh miễn phí và trả phí. Netlify cung cấp tích hợp liền mạch với Git 
+		và hỗ trợ triển khai ứng dụng ReactJS từ kho lưu trữ Git.
+
+			Vercel (https://vercel.com): Dịch vụ hosting tĩnh miễn phí và trả phí. Vercel được tạo ra đặc biệt cho triển khai ứng dụng 
+		React và Next.js. Nó cung cấp khả năng tối ưu hóa và định tuyến trang tự động.
+
+			Heroku (https://www.heroku.com): Nền tảng đám mây có thể triển khai và chạy ứng dụng ReactJS một cách linh hoạt. Heroku hỗ 
+		trợ nhiều ngôn ngữ lập trình và cung cấp một giao diện dễ sử dụng để quản lý ứng dụng.
+
+			Amazon Web Services (AWS) (https://aws.amazon.com): AWS cung cấp nhiều dịch vụ đám mây, bao gồm EC2 (Elastic Compute Cloud) 
+		để triển khai ứng dụng ReactJS trên máy ảo và S3 (Simple Storage Service) để lưu trữ các tệp tĩnh như hình ảnh và tệp CSS.
+
+			Firebase (https://firebase.google.com): Firebase của Google cung cấp dịch vụ hosting web nhanh chóng và dễ sử dụng. Bạn có 
+		thể triển khai ứng dụng ReactJS lên Firebase Hosting và tận dụng các tính năng như SSL miễn phí và CDN (Content Delivery Network).
+		
+	5.2 Hosting với ReactJS
+		Để triển khai ứng dụng ReactJS, bạn có một số tùy chọn hosting khác nhau. Dưới đây là một số phương pháp phổ biến để hosting ứng 
+	dụng ReactJS:
+
+			Netlify: Netlify là một dịch vụ hosting tĩnh miễn phí và trả phí phù hợp cho việc triển khai ứng dụng ReactJS. Bạn có thể tạo 
+		một tài khoản Netlify và tải lên mã nguồn của ứng dụng ReactJS của bạn. Netlify sẽ tự động xây dựng và triển khai ứng dụng dựa trên 
+		kho lưu trữ Git của bạn.
+
+			Vercel: Vercel là một dịch vụ hosting tĩnh miễn phí và trả phí đặc biệt cho ứng dụng React và Next.js. Bạn có thể triển khai 
+		ứng dụng ReactJS của mình trực tiếp từ kho lưu trữ Git hoặc bằng cách tải lên tệp nén của ứng dụng. Vercel cung cấp một trải nghiệm 
+		triển khai nhanh chóng và hỗ trợ tối ưu hóa định tuyến trang tự động.
+
+			GitHub Pages: Nếu mã nguồn của ứng dụng ReactJS của bạn đã được lưu trữ trên GitHub, bạn có thể sử dụng GitHub Pages để triển 
+		khai ứng dụng. GitHub Pages cung cấp hosting tĩnh miễn phí cho các trang web tĩnh, bao gồm ứng dụng ReactJS. Bạn có thể thiết lập 
+		GitHub Pages từ cài đặt kho lưu trữ của mình trên GitHub và tận dụng tính năng triển khai tự động.
+
+			Firebase Hosting: Firebase của Google cung cấp dịch vụ hosting web nhanh chóng và dễ sử dụng. Bạn có thể sử dụng Firebase 
+		Hosting để triển khai ứng dụng ReactJS của mình. Firebase cung cấp các công cụ quản lý dự án và cung cấp tính năng SSL miễn phí và 
+		CDN (Content Delivery Network).
+
+			Amazon S3: Amazon S3 (Simple Storage Service) là một dịch vụ lưu trữ đám mây từ Amazon Web Services. Bạn có thể tạo một nguồn 
+		lưu trữ S3 và tải lên tệp tĩnh của ứng dụng ReactJS của bạn lên đó. Sau đó, bạn có thể cấu hình S3 để phục vụ các tệp tĩnh như một 
+		trang web.
+
+		Các phương pháp trên chỉ là một số trong số nhiều lựa chọn hosting khác nhau cho ứng dụng ReactJS của bạn. Mỗi dịch vụ hosting có 
+	cách triển khai và cấu hình riêng. Bạn nên xem xét các yêu cầu của ứng dụng của mình và tài nguyên mà bạn có sẵn để chọn phương pháp 
+	hosting phù hợp nhất cho bạn.
+	
