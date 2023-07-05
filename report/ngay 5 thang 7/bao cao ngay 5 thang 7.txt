@@ -1,0 +1,282 @@
+1. Convensions and Best Practices
+	1.1 Convensions
+			Code convention – tạm dịch là quy ước viết code, có thể được hiểu đơn giản là tập hợp những nguyên tắc 
+		chung khi lập trình như đặt tên biến, hàm, file, class, comment,… nhằm giúp cho code dễ đọc, dễ hiểu hơn 
+		vì vậy dễ bảo trì và sửa lỗi hơn.
+			Tiêu chuẩn viết code (coding standard) thường được công nhận và sử dụng bởi một nhóm các developer để 
+		chia sẻ code một cách thống nhất. Một ví dụ phổ biến của coding standard là tập hợp các quy ước được áp 
+		dụng trong các tài liệu của một ngôn ngữ lập trình. Lấy ví dụ tiêu biểu như ngôn ngữ C có tiêu chuẩn K&R, 
+		tiêu chuẩn của Microsoft về C# hay tiêu chuẩn cho Java của Oracle,…
+		
+			Thông thường, một code convention sẽ mô tả các thông tin sau:
+				- Cách đặt tên biến (camel case: variableName, snake case: variable_name,…).
+				- Kiểu thụt lề, độ rộng thụt lề, sử dụng tab hay space,…
+				- Phương pháp đặt dấu ngoặc.
+				- Cách dùng khoảng trắng trong các biểu thức logic và số học.
+				- Cách viết comment cho code và tài liệu.
+				- Quy ước đặt tên class, tên file.
+				- Cách viết câu lệnh.
+				- Cách khai báo class và giao diện.
+				- Phương pháp tổ chức file.
+				
+			Những lợi ích mà Coding Convention mang lại:
+
+				- Đẩy cao năng suất làm việc nhóm nhanh hơn.
+				- Quy tắc hoạt động của Code Convention theo tính thống nhất và tuân thủ theo tiêu chuẩn sẽ giúp 
+				bạn dễ dàng làm việc hơn.
+				- Khi viết Code bằng Code Convention, sẽ khiến người khác dễ hiểu và nắm bắt được cái mà bạn 
+				truyền tải đến.
+				- Phần mềm Code Convention dễ dàng nâng cấp và được cải tiến.
+				- Code Convention có thể tái sử dụng trong nhiều phần mềm và các ứng dụng khác.
+				- Việc bảo trì hệ thống với Code Convention trở nên thuận lợi và dễ dàng hơn bao giờ hết.
+				
+			Bên cạnh đó, việc thống nhất code sẽ giảm thiểu tối đa các lỗi liên quan đến logic hay bảo mật, đôi 
+		khi còn có thể giúp đảm bảo hiệu năng của phần mềm và website.
+		
+		1.2 Best Practices
+			Best Practices trong HTML là tập hợp các quy tắc và phương pháp tốt nhất được khuyến nghị để viết 
+		mã HTML hiệu quả, dễ đọc, bảo trì và tương thích trên nhiều trình duyệt. 
+		
+			Một số Best Practices HTML phổ biến:
+
+				- Sử dụng cấu trúc HTML hợp lý: Sử dụng các phần tử HTML theo cách mà chúng được thiết kế, 
+			đúng cấu trúc và có ý nghĩa. Đặt các phần tử theo thứ tự hợp lý và sử dụng các phần tử 
+			semantically đúng.
+
+				- Hợp lý sử dụng các thẻ: Sử dụng các thẻ HTML theo mục đích của chúng. Tránh việc sử dụng 
+			các thẻ không hợp lý chỉ để định dạng hoặc hiển thị mà không có ý nghĩa.
+
+				- Chú thích mã HTML: Sử dụng chú thích để giải thích mã HTML và cung cấp thông tin cho những 
+			người đọc và những người bảo trì mã HTML sau này.
+
+				- Sử dụng đúng thuộc tính và giá trị: Sử dụng các thuộc tính và giá trị đúng và phù hợp với 
+			mục đích của chúng. Đảm bảo rằng các giá trị thuộc tính hợp lệ và tuân thủ các quy tắc của W3C.
+
+				- Tối ưu hóa hình ảnh: Sử dụng hình ảnh nén và tối ưu hóa kích thước hình ảnh để giảm thời 
+			gian tải trang và tối ưu trải nghiệm người dùng.
+
+                - Sử dụng các phương pháp tương thích trình duyệt: Kiểm tra và đảm bảo rằng trang web của 
+			bạn hoạt động tốt trên các trình duyệt phổ biến và các phiên bản khác nhau. Sử dụng các tính 
+			năng hỗ trợ ngược cho các phiên bản trình duyệt cũ hơn.
+
+				- Tự động hoá và kiểm tra mã HTML: Sử dụng các công cụ kiểm tra mã HTML để phát hiện và sửa 
+			lỗi trong mã HTML. Sử dụng công cụ tự động hóa để kiểm tra cú pháp và định dạng mã tự động.
+
+				- Đảm bảo trang web của bạn thân thiện với thiết bị di động: Thiết kế và xây dựng trang web 
+			để hiển thị tốt trên các thiết bị di động và có trải nghiệm người dùng tốt trên các màn hình nhỏ.
+
+				- Khai báo ngôn ngữ và kích thước font: Sử dụng thuộc tính lang để khai báo ngôn ngữ của trang 
+			web và sử dụng các giá trị em, rem hoặc % để định kích thước font chứ không sử dụng giá trị cố định 
+			như px.
+
+				- Sử dụng các thẻ hợp lý cho SEO: Sử dụng các thẻ <title>, <meta> và <header> để cung cấp thông 
+			tin quan trọng về nội dung và tối ưu hóa trang web cho công cụ tìm kiếm.
+
+			Những Best Practices này giúp cải thiện chất lượng mã HTML, tăng khả năng tương thích và trải 
+		nghiệm người dùng, và cải thiện khả năng tìm kiếm và đánh giá của công cụ tìm kiếm.
+		
+		
+2. Sematic HTML
+		Semantic HTML là cách viết HTML mà sử dụng các thẻ HTML ứng với nội dung được chứa trong nó chứ không 
+	phải sử dụng các thẻ theo cách mà chúng ta muốn nội dung trong đó được hiển thị.
+		Ví dụ:
+			- Thẻ <section>
+			Thẻ section dùng để phân chia các phần riêng biệt của trang HTML, ví dụ trong trang có các phần 
+			như About, Contact,... thì các phần này sẽ được bọc trong các thẻ <section>
+			- Thẻ <article>
+			Thẻ article dùng để chứa các nội dung độc lập trong trang. Những nội dung này có thể được cắt ra 
+			mang đi nơi khác mà người dùng ở nơi khác đọc vẫn có thể hiểu được, không phụ thuộc vào nội dung 
+			chứa trong trang.
+			- Thẻ <nav>
+			Thẻ nav dùng để chứa các thẻ <a> dẫn đến những nội dung chính của website, nên lưu ý là của website 
+			chứ không phải của trang HTML hiện tại, nav thường được bọc trong<header> hoặc <footer>.
+			- Thẻ <aside>
+			Thẻ aside chứa 1 số thông tin bên lề nội dung chính của trang. Những nội dung chứa trong <aside> có 
+			thể bị xóa đi mà không làm ảnh hưởng đến nội dung chính của trang. Lưu ý, nếu <aside> nằm trong thẻ 
+			<article> thì nội dung nằm trong thẻ <aside> đó chỉ chứa thông tin bên lề nội dung chính của 
+			<article> chứ không phải của toàn trang.
+			- Thẻ <main>
+			Thẻ <main> dùng để chứa nội dung chính của trang, nó sẽ không chứa các thông tin như <header>, 
+			<footer>, <aside>,... hoặc những gì thuộc phần intro,...Trong 1 trang chỉ có duy nhất 1 thẻ <main>.
+			- Thẻ <div>
+			Thẻ <div> là thẻ không hề có Semantic meaning. Nó chỉ dùng để bọc những nội dung có liên quan đến 
+			nhau lại. Khi không tìm được thẻ thích hợp để bọc phần nội dung đó thì ta sẽ sử dụng thẻ div.
+			- Thẻ <header> và <footer>
+				+ Thẻ <header> bọc những thông tin giới thiệu về toàn trang web hoặc navigation bar
+				+ Thẻ <footer> bọc những thông tin về trang web, thẻ footer của toàn trang thường chứa contact 
+				information, copyright information,...
+			
+3. Form & validate
+	3.1 Form
+		Một HTML Form là một phần của trang web có chứa các điều khiển như các trường văn bản, các trường mật 
+		khẩu, các checkbox, các radio button, submit button, các menu...
+
+		HTML Form là phương tiện cho người dùng nhập dữ liệu được gửi đến máy chủ để xử lý.
+		
+		Các thẻ HTML sử dụng trong Form:
+			<form>	Định nghĩa một HTML Form để nhập liệu từ phía người dùng.
+			<input>	Định nghĩa một điền khiển nhập liệu dự vào thuộc tính type của nó.
+			<textarea>	Định nghĩa ô nhập văn bản có thể nhập nhiều dòng.
+			<label>	Định nghĩa nhãn cho các input.
+			<fieldset>	Nhóm các phần tử liên quan.
+			<legend>	Định nghĩa mô tả cho thẻ <fieldset>.
+			<select>	Định nghĩa một danh sách drop-down.
+			<optgroup>	Định nghĩa một nhóm các tùy chọn liên quan thành một danh sách drop-down.
+			<option>	Định nghĩa một option trong một danh sách drop-down.
+			<button>	Định nghĩa một nút có thể click.
+	3.1 Validate 
+		Validate là kiểm tra xem dữ liệu input có hợp lệ với format yêu cầu của người lập trình hay không. 
+		Nếu có thì submit form thành công, còn không thì reject và hiển thị lỗi. Thuật toán đều là so sánh 
+		regular expression (regex) . Khác nhau là việc kiểm tra regex diễn ra ở quá trình nào.
+		Có 2 kiểu Validate:
+			- Validate Front-end:
+				+ Validate bằng HTML: Cách dùng khá đơn giản bằng cách thêm 1 số option để validate cho input.
+				+ Validate bằng Javascript: Validate bằng javascript thì chúng ta phải tự so sánh bằng tay xem 
+				dữ liệu nhập vào có khớp với format của regex hay không, và việc hiển thị tin nhắn cũng phải tự 
+				custom
+			- Validate bằng Back end:
+				+ Validate bằng ngôn ngữ Back End: 
+					Rất cần thiết và quan trọng nên hầu hết mọi Framework đều hỗ trợ validate này, điểm chung 
+					đều là gọi tới hàm callback trước khi lưu dữ liệu vào database. ( Và tất nhiên đều là sử 
+					dụng thuật toán so sánh với regular expression)
+
+					Đây là validate bắt buộc phải có!
+
+					Ưu điểm : Kiểm tra dữ liệu an toàn trước khi thực hiện lưu vào database. Depveloper cũng 
+					không quá khó khăn ( không cần code nhiều ) trong việc validate ở back end vì đã có 
+					Framework hỗ trợ.
+
+					Nhược điểm: Không chặn được việc người dùng spam request lên. Message show ra phải nhờ phía 
+					FE show lên.
+				+ Validate ở database: 
+					Khi thiết kế database, depvelop có thể chọn các option validate cho từng field của từng 
+					table ví dụ : require, unique, type, minlength, maxlength v....v... Validate ở database 
+					là việc kiểm tra cuối cùng xem dữ liệu có thực sự "an toàn " hay không ? Validate ở 
+					database có thể có hoặc không. Nhưng thông thường là có, và chỉ validate những option 
+					cơ bản chứ không phải tất cả.
+
+					Ưu điểm : Ngăn chặn việc depvelop validate thiếu sót bằng ngôn ngữ back end, dẫn dến lưu 
+					dữ liệu sai vào database.
+
+					Nhược điểm : Option hạn chế, không có regular expression. Khá bất tiện trong việc fake 
+					data lỗi để test bug.
+					
+4. Accessibility
+		Accessibility là những cách thức, giải pháp làm cho mọi người bất kể là người lành lặn hay khuyết tật 
+	đều có thể truy cập được internet cũng như trang web. Khả năng tiếp cận (a11y) là một thước đo về cách tiếp 
+	cận hệ thống máy tính là để tất cả mọi người, kể cả những người khuyết tật hoặc khiếm. Nó liên quan đến cả 
+	phần mềm và phần cứng và cách thức chúng được cấu hình để cho phép một người khuyết tật hoặc khiếm người sử 
+	dụng rằng hệ thống máy tính thành công.
+		Nhiều người nghĩ rằng Accessibility chỉ dành cho người khuyết tật. Đó là một sai lầm, những cải tiến 
+	của Accessibility đem lại lợi ích cho tất cả mọi người từ người cao tuổi, người dùng thiết bị di động hay 
+	người có tốc độ mạng kém đều có thể lướt web một cách dễ dàng nhờ Accessibility.
+
+5. SEO
+		Tối ưu Code chuẩn SEO là quá trình tối ưu tệp trích xuất HTML, cấu trúc website thân thiện với bộ máy 
+	tìm kiếm. Tối ưu Code chuẩn SEO nhằm mục tiêu điều hướng bộ tìm kiếm một cách tốt nhất. Giúp bộ máy tìm 
+	kiếm dễ dàng tải dữ liệu, đọc, phân tích dữ liệu của website bạn một cách thuận tiện, dễ dàng!.
+	
+		Một website được đánh giá là Code chuẩn SEO bao hàm 3 yếu tố cơ bản:
+
+			- Website thân thiện với người dùng. Thiết kế đẹp, nội dung điều hướng người dùng tốt. Thu hút và 
+			giữ chân người dùng lâu!.
+			- Website có cấu trúc thân thiện với bộ máy tìm kiếm. Giúp bộ máy tìm kiếm dễ dàng thu thập thông 
+			tin từ website.
+			- Phần quản trị website có đầy đủ các cơ chế quản trị thân thiện dễ dàng tùy biến SEO đối với các 
+			Admin không có kỹ năng chuyên sâu vào Code.
+			
+		Làm gì để tối ưu code chuẩn SEO cho Onpage website?.
+
+			- Nếu bạn là Coder: Hãy dựa vào các tiêu chí đánh giá tối ưu code chuẩn SEO để hoàn thiện phần nền 
+			móng 1 cách tốt nhất.
+			- Nếu bạn không phải là Coder: Hãy nắm vững các tiêu chí tối ưu code chuẩn SEO và yêu cầu đối tác 
+			thiết kế website tối ưu giúp bạn với cách làm chuyên nghiệp!.
+			
+		Dưới đây là 1 số yếu tố cơ bản để có được một trang web chuẩn seo.
+
+			I. Tên miền & Hosting.
+
+				- Chọn tên miền có tính liên quan cao đến nội dung website. Có thể chứa một vài từ khóa chính 
+			của website càng tốt, tên miền có thời gian sử dụng càng lâu càng được đánh giá cao.
+
+				- Hosting có tấc độ nhanh, IP Server cũng ảnh hưởng đôi chút tới seo (Nếu bạn seo web ở Việt 
+			Nam nên mua server đặt tại Việt Nam).
+			
+			II. Thiết kế website.
+
+				- Tối ưu hóa Url website.
+				Url nên mã hóa theo tiêu đề bài viết, có liên quan tới nội dung bài viết, keywords, description.
+				Hạn chế độ dài của url tốt nhất cho seo chỉ là 3 cấp tính từ tên domain (domain.com/cap1/cap2/cap3).
+				Sử dụng rewrite url đối với các liên kết và phân tách mỗi từ bằng dấu trừ – hoặc gạch dưới _.
+				- Title (tiêu đề bài viết) thẻ này luôn đặt trên cùng và chứa nội dung liên quan tới nội dung bài 
+				viết, url website. Độ dài của title khoảng 60-65 ký tự.
+
+				- Keywords (từ khóa) nội dung thẻ này không chứa quá nhiều từ khóa, tổng số ký tự không quá 160 
+				ký tự.
+
+				- Description (mô tả) nội dung thẻ này không chứa quá nhiều từ khóa, tổng số ký tự không quá 160 
+				ký tự. Mô tả ngắn gọn về nội dung bài viết.
+
+				- Luôn đặt tiêu đề bài viết, từ khóa quan trọng trong thẻ h1, h2, h3…theo thứ tự ưu tiên quan 
+				trọng của từ khóa.
+
+					h1 Keywords /h1
+					h2 Keywords /h2
+					h3 Keywords /h3
+				- Tách các phần như style css, javascript, data thành các file độc lập. Hạn chế sử dụng javascript 
+				quá nhiều.
+
+				- Hạn chế việc sử dụng table trong html. Đặc biệt là các table lồng table.
+
+				- Cố gắng đặt nội dung chính nằm ở đầu của cấu trúc trang html.
+
+				- Tạo các chỉ mục hướng dẫn (breadcumb). Mục đích cho phép người dùng dễ dàng quay lại các chỉ mục 
+				một cách dễ dàng.
+
+				- Dùng định dạng chữ cho phần liên kết header và footer thay vì dùng hình ảnh. Có thể dùng 
+				javascript để xử lý các liên kết.
+
+				- Tạo trang 404 cho các liên kết không tìm thấy.
+
+				- Tạo mục chia sẻ bài viết đến các mạng xã hội bằng cách tạo ra các nút chia sẻ.
+
+				- Tối ưu hiển thị trang web trên các thiết bị di động. Chính vì ngày nay việc truy cập trên các 
+				thiết bị di động không còn xa lạ do đó sẽ bị giảm thiểu người dùng nếu website của bạn không hỗ 
+				trợ việc hiển thị trên các thiết bị di động.
+
+				- Tạo RSS feed cho nội dung website.
+
+				- Tạo sitemap chứa liên kết đến các trang nội dung trên website. Nó cho phép người dùng có thể 
+				dễ dàng tìm kiếm và truy cập đến nội dung mà họ cần.
+
+				- Kiểm tra cấu trúc html chuẩn với W3C (khi kiểm tra có thể bỏ qua các lỗi cảnh báo HTML5 và 
+				các thẻ og:title, og:description, og:image khi định dạng website bằng HTML5).
+
+				Cho phép thay đổi thẻ meta và title, keywords, description ứng với mỗi nội dung bài viết.
+			III. Biên tập nội dung.
+
+				- Khi cập nhật nội dung url, title, keywords, description phải liên quan tới nhau.
+
+				- Chỉ sử dụng từ có nghĩa, cấu trúc có thể đọc được và dễ dàng để thu thập dữ liệu từ Google.
+
+				- Đặt link vào các trang liên kết khác sẽ giúp người đọc dễ theo dõi và giúp index dễ dàng.
+
+				- Nội dung bài viết dễ đọc. Phần đầu và nội dung bài viết nằm trong đoạn văn kết hợp với các 
+				sub header và number list. Chủ yếu là nội dung phải mới mẻ, lôi cuốn, trình bày đẹp mắt và mang 
+				tính thông tin cao.
+
+				- Thêm hình ảnh để nội dung hấp dẫn hơn. Đặt các thuộc tính như title và alt vào hình ảnh sẽ 
+				giúp cho SE đánh giá cao cho nội dung website của bạn và từ khóa liên quan đối với hình ảnh.
+
+				- Không nên nhồi nhét quá nhiều từ khóa vào mỗi trang web, hãy chọn những từ khóa tiêu biểu 
+				và đặt vào phần cuối của nội dung bài viết.
+
+				- Hạn chế việc dùng flash hoặc tốt hơn là không dùng flash vì các công cụ tìm kiếm không đọc 
+				được nội dung trong flash.
+
+				- Đặt link về các trang tác giả, trang phân tích có tính uy tính cao. Điều này sẽ giúp cho 
+				bài viết của bạn có tính thuyết phục và độ tin tưởng cao.
+
+				- Cập nhật thông tin thường xuyên trên website của bạn. Điều này quan trọng nhất nó sẽ giúp 
+				cho bạn lôi cuốn được người đọc ghé thăm và nên nhớ nội dung nên tập trung vào các xu hướng 
+				hiện tại và phải liên quan đến chủ đề của website.
