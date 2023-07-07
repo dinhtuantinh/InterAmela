@@ -8,15 +8,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <style>
+    .slick-slide img {
+      width: 310px;
+      height: 455px;
+    }
+    .slick-list{
+        overflow: inherit;
+        width: 333px;
+    }
+    .slick-dots li.slick-active button:before{
+        font-size: 15px;
+        color: #B88E2F;
+        
+    }
+    .slick-dots li button:before{
+        font-size: 15px;
+    }
+    .slick-dots{
+        text-align: left;
+        bottom: -62px;
+    }
+    
+  </style>
     <title>Document</title>
-
-    <style>
-        .carousel-inner > .item > img,
-        .carousel-inner > .item > a > img {
-          width: 70%;
-          margin: auto;
-        }
-        </style>
 
 </head>
 <body>
@@ -33,7 +50,7 @@
                             <img src="assets/SkinClinic.png" alt="">
                         </div>
                     </div>
-                    <div class="content-center">
+                    <div class="content-center" id="myNavbar">
                         <a href="" >Home</a>
                         <a href="">Shop</a>
                         <a href="">About</a>
@@ -455,40 +472,16 @@
             </div>
             <div class="room-slides">
 
-                <div class="slider-container">
-                    
-                    
-                    <input id="slide-dot-1" type="radio" name="slides" checked>
-                      <div class="slide slide-1 active"></div>
-                    
-                    <input id="slide-dot-2" type="radio" name="slides">
-                      <div class="slide slide-2"></div>
-                    
-                    <input id="slide-dot-3" type="radio" name="slides">
-                      <div class="slide slide-3"></div>
-                      
-                    <input id="slide-dot-4" type="radio" name="slides">
-                      <div class="slide slide-4"></div>
+                <div class="slider">
+                    <div><img src="assets/products/Images (1).png" alt="Slide 1"></div>
+                    <div><img src="assets/products/Images (2).png" alt="Slide 2"></div>
+                    <div><img src="assets/products/Images (3).png" alt="Slide 3"></div>
+                    <div><img src="assets/products/Images (4).png" alt="Slide 4"></div>
                   </div>
                   
+                  
             </div>
-            <div class="menu">
-                <label for="slide-dot-1" class="menu-label" id="menu-label-1">
-                    <div class="slide-dot-click" id="myDiv1" onclick="changeClass('menu-label-1',this)"></div>
-                </label>
-                <label for="slide-dot-2" class="menu-label" id="menu-label-2">
-                    <div class="slide-dot-click" id="myDiv2" onclick="changeClass('menu-label-2',this)"></div>
-                </label>
-                <label for="slide-dot-3" class="menu-label" id="menu-label-3">
-                    <div class="slide-dot-click" id="myDiv3" onclick="changeClass('menu-label-3',this)"></div>
-                </label>
-                <label for="slide-dot-4" class="menu-label" id="menu-label-4">
-                    <div class="slide-dot-click" id="myDiv4" onclick="changeClass('menu-label-4',this)"></div>
-                </label>
-            </div>
-            <button onclick="nextSlide()" class="next-slide">
-                <img src="icon/Line.png" alt="">
-            </button>
+            <button style="width: 50px; height: 50px;" onclick="nextSlide()" class="next-slidess"><img src="icon/Line.png" alt=""></button>
         </div>
         <div class="furniture">
             <div class="furniture-name">
@@ -546,29 +539,35 @@
         </div>
         </div>
     </div>
-    <script>
-        function changeClass(dotId, element) {
-            var dotElements = document.getElementById(dotId);
-            var labelElements = document.getElementsByClassName("menu-label");
-            for (var i = 0; i < labelElements.length; i++) {
-                labelElements[i].classList.remove("menu-label-active");
-            }
-            currentIndex = dotId;
-            var divElements = document.getElementsByClassName("slide-dot-click");
-            for (var i = 0; i < divElements.length; i++) {
-                divElements[i].classList.remove("new-class-dot");
-            }
-            element.classList.add("new-class-dot");
-            dotElements.classList.add("menu-label-active");
-        }
-        function nextSlide() {
-            var slides = document.getElementsByClassName('slide');
-            var activeSlide = document.getElementsByClassName('active')[0];
-            var nextIndex = (Array.from(slides).indexOf(activeSlide) + 1) % slides.length;
-            
-            activeSlide.classList.remove('active');
-            slides[nextIndex].classList.add('active');
-        }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script> 
+        
+        //  function changeClass(dotId, element) {
+        //     var dotElements = document.getElementById(dotId);
+        //     var labelElements = document.getElementsByClassName("menu-label");
+        //     console.log(dotId);
+        //     for (var i = 0; i < labelElements.length; i++) {
+        //         labelElements[i].classList.remove("menu-label-active");
+        //     }
+        //     currentIndex = dotId;
+        //     var divElements = document.getElementsByClassName("slide-dot-click");
+        //     for (var i = 0; i < divElements.length; i++) {
+        //         divElements[i].classList.remove("new-class-dot");
+        //     }
+        //     element.classList.add("new-class-dot");
+        //     dotElements.classList.add("menu-label-active");
+        // }
+        $(document).ready(function(){
+    $('.slider').slick({
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+    });
+  });
+  function nextSlide() {
+    $('.slider').slick('slickNext');
+  }
     </script>
 </body>
 </html>
