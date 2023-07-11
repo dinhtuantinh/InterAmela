@@ -1,0 +1,86 @@
+Câu 1: Các khái niệm cơ bản JS:
+	Kiến thức cơ bản về ngôn ngữ lập trình Javascript
+	->Là ngôn ngữ lập trình chạy trên các môi trường trình duyệt,
+	Kiểu dữ liệu động (không cần khai báo): Number, Boolen, String, Null, Undefined, Object. 
+
+	+Variable declaration and scope
+	-> Var xác định phạm vi toàn cục (global) hay hàm (function) trong khi let và const xác định được 
+	phạm vi là khối mã (block). Var, Let thay đổi gán lại được còn const thì không. Var có thể khai báo 
+	lại còn let thì không. Let, var ko cần khởi tạo giá trị ban đầu còn const thì ngược lại.
+	
+	-> scope: Trong Javascript, scope hay phạm vi truy cập, đề cập đến ngữ cảnh của đoạn code. Scope có 
+	thể định nghĩa là toàn cục (globally) hoặc cục bộ (locally).
+
+	+Data Types
+	-> Trong JS có 6 kiểu dữ liệu cơ bản: Number, Boolean, String, Null, Undefined, Object
+
+	+Number and math functions
+	-> Phương thức Number() có chức năng chuyển đổi một đối tượng thành một số. Số này sẽ đại diện cho 
+	giá trị của đối tượng được cung cấp. Nếu đối tượng được truyền vào không thể chuyển đổi thành một số, 
+	giá trị NaN sẽ được trả về.
+	-> Đối tượng Math trong Javascript sẽ giúp ta thực hiện các biểu thức đặc biệt trong toán học
+
+	+String methods
+	-> String là một trong những phần quan trọng nhất trong javascript, ngoài những methods hay dùng như 
+	trim , concat , subString , toUpperCase , toLowerCase ; Javascript còn cung cấp cho chúng ta rất nhiều 
+	methods hữu ích khác để thao tác và giải quyết các vấn đề dễ dàng hơn khi làm việc với String
+
+	+Array methods
+	-> một mảng (array) là một biến đặc biệt được sử dụng để lưu trữ các phần tử khác nhau. Mảng có một số 
+	thuộc tính tích hợp và phương thức mảng (gọi là array method) mà chúng ta có thể sử dụng để thêm, xóa, 
+	lặp hoặc thao với tác dữ liệu theo nhu cầu của mình
+
+	+Time functions: Date, setTimeout, setInterval
+	-> Date trong JavaScript là một đối tượng sẵn có giúp bạn lưu trữ date (ngày, tháng, năm), time (giờ, 
+	phút, giây) và quản lý date/time
+	-> SetTimeout() dùng để thiết lập một khoảng thời gian nào đó sẽ thực hiện một nhiệm vụ nào đó và nó 
+	chỉ thực hiện đúng một lần.
+	->  SetInterval() có cú pháp và chức năng giống như hàm setTimeout(), tuy nhiên với hàm setInterval() 
+	thì số lần thực hiện lã mãi mãi.
+	
+	+ Map khác ForEach:
+	+ forEach ko trả về giá trị nào cả, map thì trả về giá trị.
+	+ forEach dùng callback và thay đổi giá trị mảng ban đầu
+	+ map không thay đổi mảng ban đầu và trả về một mảng mới.
+
+
+	+Class and Object 
+	-> Object trong JS là những đối tượng tập hợp các thuộc tính làm một cặp khóa - giá trị chứa tên và giá trị 
+
+
+Câu 2: ES6 ra đời khi nào? Nó khác ES5 ở điểm nào?
+	+ ES6 là phiên bản thứ sáu của ECMAScript, nó được ra mặt vào 2015. ES2015 được xem là một bước nhảy lớn của 
+	ES5 khi nó được thêm các khái niệm mới, chức năng mới vào cho Javascript.
+	
+	+ Khác biệt của ES6 so với ES5 là bổ sung nhiều cú pháp mới và cải tiến so với ES5. Cú pháp mới này bao gồm 
+	cú pháp khai báo biến let và const, arrow functions (hàm mũi tên), template literals (chuỗi mẫu), destructuring 
+	assignment (gán giá trị đa cấu trúc), classes (lớp), modules (mô-đun), và nhiều cú pháp khác.
+	   - Let và const: ES6 giới thiệu từ khóa let và const để khai báo biến. let được sử dụng cho biến có phạm vi 
+	   chỉ nằm trong block ({}) và có thể được gán lại giá trị. Trong khi đó, const được sử dụng cho các hằng số 
+	   không thể thay đổi giá trị sau khi khởi tạo.
+	   - Arrow functions: ES6 giới thiệu cú pháp arrow functions cho phép viết hàm ngắn gọn hơn và liên kết this 
+	   với ngữ cảnh của hàm bên ngoài.
+	   - Template literals: ES6 cho phép sử dụng chuỗi mẫu, trong đó có thể nhúng biểu thức và biến vào trong 
+	   chuỗi bằng cú pháp ${}.
+	   - Destructuring assignment: ES6 cho phép ta gán giá trị từ một cấu trúc dữ liệu (ví dụ: mảng hoặc đối tượng) 
+	   vào các biến riêng lẻ thông qua cú pháp destructuring assignment.
+	   - Classes: ES6 bổ sung cú pháp lớp, cho phép ta tạo ra các đối tượng dựa trên mô hình hướng đối tượng truyền 
+	   thống.
+       - Modules: ES6 hỗ trợ modules, cho phép tách dự án thành các phần riêng biệt, mỗi phần chứa một tập hợp các 
+	   thành phần như biến, hàm, lớp và xuất nhập chúng giữa các module.
+	   - Promise: để xử lý kết quả của một hành động cụ thể, kết quả của mỗi hành động sẽ là thành công hoặc thất 
+	   bại.
+
+Câu 3: Xử lý Promise
+	Promise ba trạng thái sau:
+		+ Fulfilled: hành động xử lý xong và thành công
+		+ Rejected: hành động xử lý xong và thất bại
+		+ Pending: hành động đang chờ xử lý hoặc bị từ chối
+	Trong đó hai trạng thái Reject và Fulfilled ta gọi là Settled, tức là đã xử lý xong.
+	
+	Cách tạo một Promise:
+		var promise = new Promise(function (resolve, reject) {});
+	
+	
+
+
