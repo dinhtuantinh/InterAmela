@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,115 +9,140 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.0.0/css/all.css">
-  <style>
-    .slick-slide img {
-      width: 310px;
-      height: 455px;
-    }
-    .slick-list{
-        overflow: inherit;
-        width: 333px;
-    }
-    .slick-dots li.slick-active button:before{
-        font-size: 15px;
-        color: #B88E2F;
-        
-    }
-    .slick-dots li button:before{
-        font-size: 15px;
-    }
-    .slick-dots{
-        text-align: left;
-        bottom: -62px;
-    }
-    @media screen and (max-width: 1024px){
+    <style>
         .slick-slide img {
-            width: 218px;
-            height: 335px;
-        }
-        .slick-list{
-            width: 233px;
-        }
-        .slick-dots li.slick-active button:before{
-            font-size: 13px;            
-        }
-        .slick-dots li button:before{
-            font-size: 13px;
-        }
-        .slick-dots{
-            bottom: -40px;
-        }
-    }
-    @media screen and (max-width: 376px){
-        .slick-slide img {
-            width: 180px;
-            height: 290px;
-        }
-        .slick-list{
-            width: 190px;
-        }
-        .slick-dots li.slick-active button:before{
-            font-size: 13px;            
-        }
-        .slick-dots li button:before{
-            font-size: 13px;
-        }
-        .slick-dots{
-            bottom: -40px;
-        }
-        .furniture-slides .slick-list{
-            overflow: hidden;
-            width: 320px;
-            margin-left: 22px;
-            border-radius: 5px;
-        }
-        .furniture-slides .slick-slide img {
-            width: 300px;
-            height: 400px;
-            border-radius: 5px;
-        }
-        .furniture-slides .slick-dots{
-            margin-left: 12px;
-        }
-        .furniture-slides .slick-next{
-            display: none;                                   
-        }
-        .furniture-slides .slick-prev{
-            display: none;                                   
+            width: 310px;
+            height: 455px;
         }
 
-    }
+        .slick-list {
+            overflow: inherit;
+            width: 333px;
+        }
 
-    @media screen and (max-width: 768px){
-        .slick-slide img {
-            width: 220px;
-            height: 290px;
-        }
-        .slick-list{
-            width: 230px;
-        }
-        .slick-dots li.slick-active button:before{
-            font-size: 13px;            
-        }
-        .slick-dots li button:before{
-            font-size: 13px;
-        }
-        .slick-dots{
-            bottom: -40px;
-        }
-    }
-    .content-center .icon {
-        display: none;
-    }
+        .slick-dots li.slick-active button:before {
+            font-size: 15px;
+            color: #B88E2F;
 
-    
-  </style>
+        }
+
+        .slick-dots li button:before {
+            font-size: 15px;
+        }
+
+        .slick-dots {
+            text-align: left;
+            bottom: -62px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .slick-slide img {
+                width: 218px;
+                height: 335px;
+            }
+
+            .slick-list {
+                width: 233px;
+            }
+
+            .slick-dots li.slick-active button:before {
+                font-size: 13px;
+            }
+
+            .slick-dots li button:before {
+                font-size: 13px;
+            }
+
+            .slick-dots {
+                bottom: -40px;
+            }
+        }
+
+        @media screen and (max-width: 376px) {
+            .slick-slide img {
+                width: 180px;
+                height: 290px;
+            }
+
+            .slick-list {
+                width: 190px;
+            }
+
+            .slick-dots li.slick-active button:before {
+                font-size: 13px;
+            }
+
+            .slick-dots li button:before {
+                font-size: 13px;
+            }
+
+            .slick-dots {
+                bottom: -40px;
+            }
+
+            .furniture-slides .slick-list {
+                overflow: hidden;
+                width: 320px;
+                margin-left: 22px;
+                border-radius: 5px;
+            }
+
+            .furniture-slides .slick-slide img {
+                width: 300px;
+                height: 400px;
+                border-radius: 5px;
+            }
+
+            .furniture-slides .slick-dots {
+                margin-left: 12px;
+            }
+
+            .furniture-slides .slick-next {
+                display: none;
+            }
+
+            .furniture-slides .slick-prev {
+                display: none;
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+            .slick-slide img {
+                width: 220px;
+                height: 290px;
+            }
+
+            .slick-list {
+                width: 230px;
+            }
+
+            .slick-dots li.slick-active button:before {
+                font-size: 13px;
+            }
+
+            .slick-dots li button:before {
+                font-size: 13px;
+            }
+
+            .slick-dots {
+                bottom: -40px;
+            }
+        }
+
+        .content-center .icon {
+            display: none;
+        }
+    </style>
     <title>Document</title>
 
 </head>
+
 <body>
     <div class="home">
         Home
@@ -132,7 +158,7 @@
                         </div>
                     </div>
                     <ul class="content-center" id="myTopnav">
-                        <li><a href="" >Home</a></li>
+                        <li><a href="">Home</a></li>
                         <li><a href="">Shop</a></li>
                         <li><a href="">About</a></li>
                         <li><a href="">Contact</a></li>
@@ -162,11 +188,11 @@
                     <div class="toggle-btn">
                         <i class="fa-solid fa-bars"></i>
                     </div>
-                   
+
                 </div>
                 <div class="drop-menu">
                     <ul class="drop-content-center">
-                        <li><a href="" >Home</a></li>
+                        <li><a href="">Home</a></li>
                         <li><a href="">Shop</a></li>
                         <li><a href="">About</a></li>
                         <li><a href="">Contact</a></li>
@@ -174,16 +200,17 @@
                 </div>
             </header>
             <div class="home-top-body">
-                <div ></div>
+                <div></div>
                 <div class="home-top-body-content">
                     <div class="content">
                         <div class="suggest">New Arrival</div>
                         <div class="name">Discover Our New Collection</div>
-                        <div class="describe">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper</div>
+                        <div class="describe">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                            luctus nec ullamcorper</div>
                     </div>
                     <Button class="btn-by-now">BUY NOW</Button>
                 </div>
-               
+
             </div>
         </div>
         <div class="browse">
@@ -198,14 +225,14 @@
                             <img src="assets/Mask Group.png" alt="">
                             <div class="title">Dining</div>
                         </div>
-                        
+
                     </a>
                     <a href="" class="browse-content-img">
                         <div class="img-title">
                             <img src="assets/Image-living room.png" alt="">
                             <div class="title">Living</div>
                         </div>
-                        
+
                     </a>
                     <a href="" class="browse-content-img">
                         <div class="img-title">
@@ -215,7 +242,7 @@
                     </a>
                 </div>
             </div>
-            
+
         </div>
         <div class="our">
             <div class="our-product">
@@ -261,7 +288,7 @@
                                     </a>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="detail">
@@ -279,27 +306,27 @@
                             <div class="price">
                                 <div class="new">Rp 2.500.000</div>
                             </div>
-                            </div>
-                            <div class="detail-hover">
-                                <div class="operation">
-                                    <button class="add-cart">Add to cart</button>
-                                    <div class="share">
-                                        <a href="">
-                                            <img src="icon/share.png"></img>
-                                            <div class="share-name">Share</div>
-                                        </a>
-                                        <a href="">
-                                            <img src="icon/Vector2.png"></img>
-                                            <div class="share-name">Compare</div>
-                                        </a>
-                                        <a href="">
-                                            <img src="icon/tym.png"></img>
-                                            <div class="share-name">Like</div>
-                                        </a>
-                                    </div>
+                        </div>
+                        <div class="detail-hover">
+                            <div class="operation">
+                                <button class="add-cart">Add to cart</button>
+                                <div class="share">
+                                    <a href="">
+                                        <img src="icon/share.png"></img>
+                                        <div class="share-name">Share</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/Vector2.png"></img>
+                                        <div class="share-name">Compare</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/tym.png"></img>
+                                        <div class="share-name">Like</div>
+                                    </a>
                                 </div>
-                                
                             </div>
+
+                        </div>
                     </div>
                     <div class="detail">
                         <div class="product-img" style="background-image: url(assets/products/Images.png);">
@@ -320,27 +347,27 @@
                                 <div class="new">Rp 2.500.000</div>
                                 <div class="old">Rp 3.500.000</div>
                             </div>
-                            </div>
-                            <div class="detail-hover">
-                                <div class="operation">
-                                    <button class="add-cart">Add to cart</button>
-                                    <div class="share">
-                                        <a href="">
-                                            <img src="icon/share.png"></img>
-                                            <div class="share-name">Share</div>
-                                        </a>
-                                        <a href="">
-                                            <img src="icon/Vector2.png"></img>
-                                            <div class="share-name">Compare</div>
-                                        </a>
-                                        <a href="">
-                                            <img src="icon/tym.png"></img>
-                                            <div class="share-name">Like</div>
-                                        </a>
-                                    </div>
+                        </div>
+                        <div class="detail-hover">
+                            <div class="operation">
+                                <button class="add-cart">Add to cart</button>
+                                <div class="share">
+                                    <a href="">
+                                        <img src="icon/share.png"></img>
+                                        <div class="share-name">Share</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/Vector2.png"></img>
+                                        <div class="share-name">Compare</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/tym.png"></img>
+                                        <div class="share-name">Like</div>
+                                    </a>
                                 </div>
-                                
                             </div>
+
+                        </div>
                     </div>
                     <div class="detail">
                         <div class="product-img" style="background-image: url(assets/products/Images\ \(1\).png);">
@@ -360,197 +387,198 @@
                             <div class="price">
                                 <div class="new">Rp 500.000</div>
                             </div>
-                            </div>
-                            <div class="detail-hover">
-                                <div class="operation">
-                                    <button class="add-cart">Add to cart</button>
-                                    <div class="share">
-                                        <a href="">
-                                            <img src="icon/share.png"></img>
-                                            <div class="share-name">Share</div>
-                                        </a>
-                                        <a href="">
-                                            <img src="icon/Vector2.png"></img>
-                                            <div class="share-name">Compare</div>
-                                        </a>
-                                        <a href="">
-                                            <img src="icon/tym.png"></img>
-                                            <div class="share-name">Like</div>
-                                        </a>
-                                    </div>
+                        </div>
+                        <div class="detail-hover">
+                            <div class="operation">
+                                <button class="add-cart">Add to cart</button>
+                                <div class="share">
+                                    <a href="">
+                                        <img src="icon/share.png"></img>
+                                        <div class="share-name">Share</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/Vector2.png"></img>
+                                        <div class="share-name">Compare</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/tym.png"></img>
+                                        <div class="share-name">Like</div>
+                                    </a>
                                 </div>
-                                
                             </div>
+
+                        </div>
                     </div>
-                    </div>
-                    <div class="product">
-                        <div class="detail">
-                            <div class="product-img" style="background-image: url(assets/products/Images\ \(2\).png);">
-                            </div>
-                            <div class="product-name">
-                                <div class="name-note">
-                                    <div class="name">
-                                        Grifo
-                                    </div>
-                                    <div class="note">
-                                        Night lamp
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="new">Rp 1.500.000</div>
-                                </div>
-                                </div>
-                                <div class="detail-hover">
-                                    <div class="operation">
-                                        <button class="add-cart">Add to cart</button>
-                                        <div class="share">
-                                            <a href="">
-                                                <img src="icon/share.png"></img>
-                                                <div class="share-name">Share</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/Vector2.png"></img>
-                                                <div class="share-name">Compare</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/tym.png"></img>
-                                                <div class="share-name">Like</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                        </div>
-                        <div class="detail">
-                            <div class="product-img" style="background-image: url(assets/products/Images\ \(3\).png);">
-                                <div class="product-sale new">
-                                    <div class="content">New</div>
-                                </div>
-                            </div>
-                            <div class="product-name">
-                                <div class="name-note">
-                                    <div class="name">
-                                        Muggo
-                                    </div>
-                                    <div class="note">
-                                        Small mug
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="new">Rp 150.000</div>
-                                </div>
-                                </div>
-                                <div class="detail-hover">
-                                    <div class="operation">
-                                        <button class="add-cart">Add to cart</button>
-                                        <div class="share">
-                                            <a href="">
-                                                <img src="icon/share.png"></img>
-                                                <div class="share-name">Share</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/Vector2.png"></img>
-                                                <div class="share-name">Compare</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/tym.png"></img>
-                                                <div class="share-name">Like</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                        </div>
-                        <div class="detail">
-                            <div class="product-img" style="background-image: url(assets/products/Images\ \(4\).png);">
-                                <div class="product-sale">
-                                    <div class="content">-30%</div>
-                                </div>
-                            </div>
-                            <div class="product-name">
-                                <div class="name-note">
-                                    <div class="name">
-                                        Pingky
-                                    </div>
-                                    <div class="note">
-                                        Cute bed set
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="new">Rp 7.500.000</div>
-                                    <div class="old">Rp 14.500.000</div>
-                                </div>
-                                </div>
-                                <div class="detail-hover">
-                                    <div class="operation">
-                                        <button class="add-cart">Add to cart</button>
-                                        <div class="share">
-                                            <a href="">
-                                                <img src="icon/share.png"></img>
-                                                <div class="share-name">Share</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/Vector2.png"></img>
-                                                <div class="share-name">Compare</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/tym.png"></img>
-                                                <div class="share-name">Like</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                        </div>
-                        <div class="detail">
-                            <div class="product-img" style="background-image: url(assets/products/image\ 6.png);">
-                                <div class="product-sale new">
-                                    <div class="content">New</div>
-                                </div>
-                            </div>
-                            <div class="product-name">
-                                <div class="name-note">
-                                    <div class="name">
-                                        Potty
-                                    </div>
-                                    <div class="note">
-                                        Minimalist flower pot
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="new">Rp 500.000</div>
-                                </div>
-                                </div>
-                                <div class="detail-hover">
-                                    <div class="operation">
-                                        <button class="add-cart">Add to cart</button>
-                                        <div class="share">
-                                            <a href="">
-                                                <img src="icon/share.png"></img>
-                                                <div class="share-name">Share</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/Vector2.png"></img>
-                                                <div class="share-name">Compare</div>
-                                            </a>
-                                            <a href="">
-                                                <img src="icon/tym.png"></img>
-                                                <div class="share-name">Like</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                        </div>
-                        </div>
-                    <button class="show-more">Show More</button>
                 </div>
+                <div class="product">
+                    <div class="detail">
+                        <div class="product-img" style="background-image: url(assets/products/Images\ \(2\).png);">
+                        </div>
+                        <div class="product-name">
+                            <div class="name-note">
+                                <div class="name">
+                                    Grifo
+                                </div>
+                                <div class="note">
+                                    Night lamp
+                                </div>
+                            </div>
+                            <div class="price">
+                                <div class="new">Rp 1.500.000</div>
+                            </div>
+                        </div>
+                        <div class="detail-hover">
+                            <div class="operation">
+                                <button class="add-cart">Add to cart</button>
+                                <div class="share">
+                                    <a href="">
+                                        <img src="icon/share.png"></img>
+                                        <div class="share-name">Share</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/Vector2.png"></img>
+                                        <div class="share-name">Compare</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/tym.png"></img>
+                                        <div class="share-name">Like</div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <div class="product-img" style="background-image: url(assets/products/Images\ \(3\).png);">
+                            <div class="product-sale new">
+                                <div class="content">New</div>
+                            </div>
+                        </div>
+                        <div class="product-name">
+                            <div class="name-note">
+                                <div class="name">
+                                    Muggo
+                                </div>
+                                <div class="note">
+                                    Small mug
+                                </div>
+                            </div>
+                            <div class="price">
+                                <div class="new">Rp 150.000</div>
+                            </div>
+                        </div>
+                        <div class="detail-hover">
+                            <div class="operation">
+                                <button class="add-cart">Add to cart</button>
+                                <div class="share">
+                                    <a href="">
+                                        <img src="icon/share.png"></img>
+                                        <div class="share-name">Share</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/Vector2.png"></img>
+                                        <div class="share-name">Compare</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/tym.png"></img>
+                                        <div class="share-name">Like</div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <div class="product-img" style="background-image: url(assets/products/Images\ \(4\).png);">
+                            <div class="product-sale">
+                                <div class="content">-30%</div>
+                            </div>
+                        </div>
+                        <div class="product-name">
+                            <div class="name-note">
+                                <div class="name">
+                                    Pingky
+                                </div>
+                                <div class="note">
+                                    Cute bed set
+                                </div>
+                            </div>
+                            <div class="price">
+                                <div class="new">Rp 7.500.000</div>
+                                <div class="old">Rp 14.500.000</div>
+                            </div>
+                        </div>
+                        <div class="detail-hover">
+                            <div class="operation">
+                                <button class="add-cart">Add to cart</button>
+                                <div class="share">
+                                    <a href="">
+                                        <img src="icon/share.png"></img>
+                                        <div class="share-name">Share</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/Vector2.png"></img>
+                                        <div class="share-name">Compare</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/tym.png"></img>
+                                        <div class="share-name">Like</div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <div class="product-img" style="background-image: url(assets/products/image\ 6.png);">
+                            <div class="product-sale new">
+                                <div class="content">New</div>
+                            </div>
+                        </div>
+                        <div class="product-name">
+                            <div class="name-note">
+                                <div class="name">
+                                    Potty
+                                </div>
+                                <div class="note">
+                                    Minimalist flower pot
+                                </div>
+                            </div>
+                            <div class="price">
+                                <div class="new">Rp 500.000</div>
+                            </div>
+                        </div>
+                        <div class="detail-hover">
+                            <div class="operation">
+                                <button class="add-cart">Add to cart</button>
+                                <div class="share">
+                                    <a href="">
+                                        <img src="icon/share.png"></img>
+                                        <div class="share-name">Share</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/Vector2.png"></img>
+                                        <div class="share-name">Compare</div>
+                                    </a>
+                                    <a href="">
+                                        <img src="icon/tym.png"></img>
+                                        <div class="share-name">Like</div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <button class="show-more">Show More</button>
             </div>
+        </div>
         <div class="room">
             <div class="room-number">
                 <div class="number">
                     <div class="name">50+ Beautiful rooms inspiration</div>
-                    <div class="title">Our designer already made a lot of beautiful prototipe of rooms that inspire you</div>
+                    <div class="title">Our designer already made a lot of beautiful prototipe of rooms that inspire you
+                    </div>
                 </div>
                 <button class="more">Explore More</button>
             </div>
@@ -578,11 +606,12 @@
                     <div><img src="assets/products/Images (2).png" alt="Slide 2"></div>
                     <div><img src="assets/products/Images (3).png" alt="Slide 3"></div>
                     <div><img src="assets/products/Images (4).png" alt="Slide 4"></div>
-                  </div>
-                  
-                  
+                </div>
+
+
             </div>
-            <button style="width: 50px; height: 50px;" onclick="nextSlide()" class="next-slidess"><img src="icon/Line.png" alt=""></button>
+            <button style="width: 50px; height: 50px;" onclick="nextSlide()" class="next-slidess"><img
+                    src="icon/Line.png" alt=""></button>
         </div>
         <div class="furniture">
             <div class="furniture-name">
@@ -611,7 +640,7 @@
                     <div><img src="assets/furniture/Rectangle 45.png" alt="Slide 6"></div>
                     <div><img src="assets/furniture/Rectangle 43.png" alt="Slide 7"></div>
                     <div><img src="assets/furniture/Rectangle 44.png" alt="Slide 8"></div>
-                  </div>           
+                </div>
             </div>
         </div>
         <div class="footer">
@@ -650,27 +679,27 @@
                 <div class="footer-down">2023 furino. All rights reverved</div>
             </div>
         </div>
-        </div>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script> 
-        
-        $(document).ready(function(){
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
             $('.slider').slick({
-            dots: true,
-            autoplay: true,
-            autoplaySpeed: 2000,
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
             });
         });
         function nextSlide() {
             $('.slider').slick('slickNext');
         }
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('.furniture-slider').slick({
-            dots: true,
-            autoplay: true,
-            autoplaySpeed: 2000,
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
             });
         });
 
@@ -678,13 +707,14 @@
         const toggleBtnIcon = document.querySelector('.toggle-btn i')
         const dropMenu = document.querySelector('.drop-menu')
 
-        toggleBtn.onclick = function(){
+        toggleBtn.onclick = function () {
             dropMenu.classList.toggle('open')
             const isOpen = dropMenu.classList.contains('open')
-            toggleBtnIcon.classList=isOpen
+            toggleBtnIcon.classList = isOpen
                 ? 'fa-solid fa-xmark'
                 : 'fa-solid fa-bars'
         }
     </script>
 </body>
+
 </html>
