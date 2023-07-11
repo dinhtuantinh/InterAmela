@@ -9,7 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.0.0/css/all.css">
   <style>
     .slick-slide img {
       width: 310px;
@@ -31,6 +32,86 @@
         text-align: left;
         bottom: -62px;
     }
+    @media screen and (max-width: 1024px){
+        .slick-slide img {
+            width: 218px;
+            height: 335px;
+        }
+        .slick-list{
+            width: 233px;
+        }
+        .slick-dots li.slick-active button:before{
+            font-size: 13px;            
+        }
+        .slick-dots li button:before{
+            font-size: 13px;
+        }
+        .slick-dots{
+            bottom: -40px;
+        }
+    }
+    @media screen and (max-width: 376px){
+        .slick-slide img {
+            width: 180px;
+            height: 290px;
+        }
+        .slick-list{
+            width: 190px;
+        }
+        .slick-dots li.slick-active button:before{
+            font-size: 13px;            
+        }
+        .slick-dots li button:before{
+            font-size: 13px;
+        }
+        .slick-dots{
+            bottom: -40px;
+        }
+        .furniture-slides .slick-list{
+            overflow: hidden;
+            width: 320px;
+            margin-left: 22px;
+            border-radius: 5px;
+        }
+        .furniture-slides .slick-slide img {
+            width: 300px;
+            height: 400px;
+            border-radius: 5px;
+        }
+        .furniture-slides .slick-dots{
+            margin-left: 12px;
+        }
+        .furniture-slides .slick-next{
+            display: none;                                   
+        }
+        .furniture-slides .slick-prev{
+            display: none;                                   
+        }
+
+    }
+
+    @media screen and (max-width: 768px){
+        .slick-slide img {
+            width: 220px;
+            height: 290px;
+        }
+        .slick-list{
+            width: 230px;
+        }
+        .slick-dots li.slick-active button:before{
+            font-size: 13px;            
+        }
+        .slick-dots li button:before{
+            font-size: 13px;
+        }
+        .slick-dots{
+            bottom: -40px;
+        }
+    }
+    .content-center .icon {
+        display: none;
+    }
+
     
   </style>
     <title>Document</title>
@@ -50,26 +131,46 @@
                             <img src="assets/SkinClinic.png" alt="">
                         </div>
                     </div>
-                    <div class="content-center" id="myNavbar">
-                        <a href="" >Home</a>
-                        <a href="">Shop</a>
-                        <a href="">About</a>
-                        <a href="">Contact</a>
+                    <ul class="content-center" id="myTopnav">
+                        <li><a href="" >Home</a></li>
+                        <li><a href="">Shop</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                    </ul>
+                    <ul class="content-right">
+                        <li>
+                            <a href="">
+                                <img src="icon/Vector.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="icon/akar-icons_search.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="icon/akar-icons_heart.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="icon/ant-design_shopping-cart-outlined.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="toggle-btn">
+                        <i class="fa-solid fa-bars"></i>
                     </div>
-                    <div class="content-right">
-                        <a href="">
-                            <img src="icon/Vector.png" alt="">
-                        </a>
-                        <a href="">
-                            <img src="icon/akar-icons_search.png" alt="">
-                        </a>
-                        <a href="">
-                            <img src="icon/akar-icons_heart.png" alt="">
-                        </a>
-                        <a href="">
-                            <img src="icon/ant-design_shopping-cart-outlined.png" alt="">
-                        </a>
-                    </div>
+                   
+                </div>
+                <div class="drop-menu">
+                    <ul class="drop-content-center">
+                        <li><a href="" >Home</a></li>
+                        <li><a href="">Shop</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                    </ul>
                 </div>
             </header>
             <div class="home-top-body">
@@ -500,6 +601,18 @@
                 <div class="nine"></div>
 
             </div>
+            <div class="furniture-slides">
+                <div class="furniture-slider">
+                    <div><img src="assets/furniture/Rectangle 37.png" alt="Slide 1"></div>
+                    <div><img src="assets/furniture/Rectangle 38.png" alt="Slide 2"></div>
+                    <div><img src="assets/furniture/Rectangle 39.png" alt="Slide 3"></div>
+                    <div><img src="assets/furniture/Rectangle 40.png" alt="Slide 4"></div>
+                    <div><img src="assets/furniture/Rectangle 41.png" alt="Slide 5"></div>
+                    <div><img src="assets/furniture/Rectangle 45.png" alt="Slide 6"></div>
+                    <div><img src="assets/furniture/Rectangle 43.png" alt="Slide 7"></div>
+                    <div><img src="assets/furniture/Rectangle 44.png" alt="Slide 8"></div>
+                  </div>           
+            </div>
         </div>
         <div class="footer">
             <div class="footer-container">
@@ -543,31 +656,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script> 
         
-        //  function changeClass(dotId, element) {
-        //     var dotElements = document.getElementById(dotId);
-        //     var labelElements = document.getElementsByClassName("menu-label");
-        //     console.log(dotId);
-        //     for (var i = 0; i < labelElements.length; i++) {
-        //         labelElements[i].classList.remove("menu-label-active");
-        //     }
-        //     currentIndex = dotId;
-        //     var divElements = document.getElementsByClassName("slide-dot-click");
-        //     for (var i = 0; i < divElements.length; i++) {
-        //         divElements[i].classList.remove("new-class-dot");
-        //     }
-        //     element.classList.add("new-class-dot");
-        //     dotElements.classList.add("menu-label-active");
-        // }
         $(document).ready(function(){
-    $('.slider').slick({
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
-    });
-  });
-  function nextSlide() {
-    $('.slider').slick('slickNext');
-  }
+            $('.slider').slick({
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            });
+        });
+        function nextSlide() {
+            $('.slider').slick('slickNext');
+        }
+        $(document).ready(function(){
+            $('.furniture-slider').slick({
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            });
+        });
+
+        const toggleBtn = document.querySelector('.toggle-btn')
+        const toggleBtnIcon = document.querySelector('.toggle-btn i')
+        const dropMenu = document.querySelector('.drop-menu')
+
+        toggleBtn.onclick = function(){
+            dropMenu.classList.toggle('open')
+            const isOpen = dropMenu.classList.contains('open')
+            toggleBtnIcon.classList=isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+        }
     </script>
 </body>
 </html>
