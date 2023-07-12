@@ -36,21 +36,21 @@
   "user": [
     {
       "id": 1,
-      "userName": "Tuan",
-      "pass": "11111",
-      "email": "tinhqqq@gmail.com"
-    },
-    {
-      "id": 2,
       "userName": "Tuan t",
       "pass": "1234",
       "email": "thqqq@gmail.com"
     },
     {
-      "id": 3,
+      "id": 2,
       "userName": "Tuan a",
       "pass": "4332",
       "email": "taaaqqq@gmail.com"
+    },
+    {
+      "userName": "admin",
+      "pass": "123a",
+      "email": "admin@gmail.com",
+      "id": 3
     }
   ]
 }
