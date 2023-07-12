@@ -1,0 +1,88 @@
+Một số các khái niệm trong JS
+1. Array
+	+ Khái niệm: Array(mảng) là một kiểu dữ liệu trong Javascript mà giá trị của nó chưa nhiều giá trị khác. 
+	Mỗi giá trị của mảng gọi là element(phần tử).
+	+ Có 2 cách khai báo Array trong JS:
+		- Dùng Array literals: Được biểu diễn bằng dấu ngoặc vuông và theo sau là giá trị rỗng hay một hoặc 
+		nhiều giá trị được ngăn cách nhau bằng dấu phẩy.
+		- Dùng Array Constractor; Được khởi tạo bằng cách dùng từ khóa 'new'.
+	+ Thuộc tính: length: Là thuộc tính đưa ra độ dài của mảng. Nếu bạn dùng một số nguyên âm, số thực hoặc 
+	một chuỗi làm chỉ mục thì độ dài của mảng cũng là một số nguyên dương cao nhất.
+	+ Methods:
+		- Mutator Methods: Dùng để thay đổi mảng ban đầu, bao gồm:
+			# Array.prototype.push(): Phương thức thêm một phần tử vào cuối mảng và trả về độ dài của mảng.
+			# Array.prototype.pop(): Phương thức xóa phần tử cuối của mảng và trả về phần tử đã xóa.
+			# Array.prototype.shift(): Giống như pop, phương thức này xóa phần tử đầu tiên của mảng và trả 
+			về phần tử đó.
+			# Array.prototype.splice(): Là phương thức dùng để chèn hoặc xóa đi một hay nhiều phần tử.
+		- Accessor Methods: Dùng để truy cập giá trị, trả về một số giá trị cần thiết và không làm thay đổi 
+		mảng hiện có, bao gồm:
+			# Array.prototype.includes(): Trả về true hoặc false, kiểm tra sự tồn tại của phần tử nằm trong 
+			mảng.
+			# Array.prototype.indexOf(): Trả về chỉ mục đầu tiên tìm thấy được. Nếu không tìm thấy sẽ trả 
+			về -1 . Nó cũng nhận đối số thứ 2 ( tùy chọn ) để làm vị trí bắt đầu.
+			# Array.prototype.join(): Là phương thức nối các phần tử của mảng thành một chuỗi. Nó nhận đối 
+			số là điểm nối giữa các phần tử với nhau.
+		- Iteration methods: phương thức dùng để lặp các phần tử trong mảng, bao gồm:
+			# Array.prototype.filter(): Lặp các phần tử trong mảng đã cho và trả về một mảng mới với các 
+			phần tử thõa mãn điều kiện lọc.
+			# Array.prototype.map(): Tạo một mảng mới với sự biến đổi của các phần tử trong mảng.
+			# Array.prototype.find(): Trả về một phần tử đầu tiên trong mảng thõa mãn điều kiện tìm kiếm.
+			# Array.prototype.reduce(): Là phương thức phức tạp hơn các phương thức còn lại. Nó duyệt qua 
+			các phần tử trong mảng và gọi một callback trên mỗi phần tử, các giá trị trả về sẽ truyền từ 
+			callback này sang callback khác, cuối cùng trả về giá trị sau khi duyệt đến cuối mảng.
+
+2. Promise
+	+ Khái niệm: Promise object đại diện cho việc hoàn thành kết quả (hoặc sự thất bại) từ một lệnh bất 
+	đồng bộ, và giá trị kết quả của lệnh đó.
+	Mục đích của Promise là cơ chế của nó giúp bạn thực hiện các tác vụ đồng bộ hơn và tránh rơi vào tình 
+	trạng callback hell hay pyramid of doom, là tình trạng dùng các callback lồng nhau quá nhiều.
+	+ Cơ chế hoạt động của Promise:
+	Một Promise có 1 trong 3 trạng thái sau:
+		- pending: trạng thái khởi tạo
+		- fulfilled: thao tác đã hoàn thành thành công
+		- rejected: thao tác thất bại
+	Một promise pending có thể thành fulfilled với kết quả, hoặc thành rejected với nguyên nhân (error). 
+	Khi option đó diễn ra, các handler liên quan sẽ thực hiện.
+	+ Promise còn hỗ trợ cho chúng ta một kỹ thuật khá hay giúp ta kết nối các promise liên tiếp lại với 
+	nhau. Vì phương thức then (ở trường hợp promise thành công) khi return giá trị thì nó sẽ tạo một promise 
+	khác bọc lại giá trị đó, ta có thể tạo nên phương thức then phía sau để kết nối tiếp.
+
+3. Async, Await
+	Trong ES7, Async / Await đã được bổ xung để việc viết code bất đồng bộ trong JavaScript tốt hơn, code 
+	dễ nhìn hơn và dễ sử dụng hơn.
+	+ Khái niệm: Async / Await là một tính năng của JavaScript giúp chúng ta làm việc với các hàm bất đồng 
+	bộ theo cách thú vị hơn và dễ hiểu hơn. Nó được xây dựng trên Promises và tương thích với tất cả các 
+	Promise dựa trên API.
+		- Async: khai báo một hàm bất đồng bộ (async function someName(){...}).
+			# Tự động biến đổi một hàm thông thường thành một Promise.
+			# Khi gọi tới hàm async nó sẽ xử lý mọi thứ và được trả về kết quả trong hàm của nó.
+			# Async cho phép sử dụng Await.
+		- Await: tạm dừng việc thực hiện các hàm async. (Var result = await someAsyncCall ().
+			# Khi được đặt trước một Promise, nó sẽ đợi cho đến khi Promise kết thúc và trả về kết quả.
+			# Await chỉ làm việc với Promises, nó không hoạt động với callbacks.
+			# Await chỉ có thể được sử dụng bên trong các function async.
+	+ Xử lý lỗi trong Async / Await
+	Async / Await cho phép chúng ta bắt các lỗi không mong đợi bằng cách sử dụng try/catch. Chúng ta chỉ 
+	cần await call của chúng ta vào trong khối try/catch. 
+	Khi xử lý lỗi bằng Async / Await có hai cách là: 
+		- Sử dụng catch()chức năng: Hàm async trả về một .Promise, khi lời hứa bị từ chối, nó là catch()
+		chức năng cho phép bạn bắt và xử lý lỗi này.
+		- Cách khác là bắt các lỗi không mong đợi bằng cách sử dụng try / catch. Chúng ta chỉ cần để các 
+		await call của chúng ta vào trong khối try/catch.
+	+ Ưu điểm:
+		- Code dễ đọc hơn rất rất nhiều, không cần phải then rồi catch gì cả, chỉ viết như code chạy tuần 
+		tự, sau đó dùng try/catch thông thường để bắt lỗi.
+		- Viết vòng lặp qua từng phần tử trở nên vô cùng đơn giản, chỉ việc await trong mỗi vòng lặp.
+		- Debug dễ hơn nhiều, vì mỗi lần dùng await được tính là một dòng code, do đó ta có thể đặt 
+		debugger để debug từng dòng như thường.
+		- Khi có lỗi, exception sẽ chỉ ra lỗi ở dòng số mấy chứ không chung chung là un-resolved promise.
+		- Với promise hoặc callback, việc kết hợp if/else hoặc retry với code asynchnous là một cực hình 
+		vì ta phải viết code lòng vòng, rắc rối. Với async/await, việc này vô cùng dễ dàng.
+	+ Nhược điểm:
+		- Không chạy được trên các trình duyệt cũ. Nếu dự án yêu cầu phải chạy trên các trình duyệt cũ, 
+		bạn sẽ phải dùng Babel để transpiler code ra ES5 để chạy.
+		- Khi ta await một promise bị reject, JavaScript sẽ throw một Exception. Do đó, nếu dùng async 
+		await mà quên try catch thì lâu lâu chúng ta sẽ bị… nuốt lỗi hoặc code ngừng chạy.
+		- Async và await bắt buộc phải đi kèm với nhau! await chỉ dùng được trong hàm async, nếu không 
+		sẽ bị syntax error. Do đó, async/await sẽ lan dần ra toàn bộ các hàm trong code của bạn.
