@@ -1,0 +1,479 @@
+Tìm hiểu ReactJS
+React là một thư viện JavaScript declarative, hiệu quả và linh hoạt cho việc xây dựng giao diện người 
+dùng. React cho phép bạn tạo những giao diện (UI) phức tạp từ những đoạn code nhỏ và độc lập. Những 
+đoạn code này được gọi là “components”.
+1. JSX
+	1.1 Khái niệm: JSX = Javascript + XML. Nó transform cú pháp dạng gần như XML về thành Javascript. 
+	Giúp người lập trình có thể code ReactJS bằng cú pháp của XML thay vì sử dụng Javascript. Các XML 
+	elements, attributes và children được chuyển đổi thành các đối số truyền vào React.createElement.
+	1.2 Cú pháp: Cú pháp của JSX cũng tương tự như XML
+		+ Thẻ mở tag: <JSXElementName JSXAttributesopt>
+		+ Thẻ đóng tag: </JSXElementName>
+		+ JSX cũng có SelfClosingElement: <JSXElementName JSXAttributes/>
+	1.3 JSX cần thiết trong ReactJS: Việc sử dụng JSX trong ReactJS là không bắt buộc. Bạn có thể sử 
+	dụng chỉ JS thuần thôi. Nhưng có rất nhiều lý do cho việc nên sử dụng JSX trong ReactJS:
+		+ Thứ nhất, JSX với cú pháp gần giống XML, cấu trúc cây khi biểu thị các attributes, điều đó 
+		giúp ta dễ dàng định nghĩa, quản lý được các component phức tạp, thay vì việc phải định nghĩa 
+		và gọi ra nhiều hàm hoặc object trong javascript. Khi nhìn vào cấu trúc đó cũng dễ dàng đọc hiểu 
+		được ý nghĩa của các component. Code JSX ngắn hơn, dễ hiểu hơn code JS.
+		+ Thứ 2, JSX không làm thay đổi ngữ nghĩa của Javascript
+		+ Thứ 3, với cách viết gần với các thẻ HTML, nó giúp những developers thông thường (ví dụ như các 
+		designer) có thể hiểu được một cách dễ dàng, từ đó có thể viết hoặc sửa code mà không gặp nhiều 
+		khó khăn.
+		Ví dụ: - Code ReactJS với JavaScript: 
+			React.createElement("div", {className: "red"}, "Children Text");
+			React.createElement(MyCounter, {count: 3 + 5});
+
+			React.createElement(DashboardUnit, {"data-index": "2"},
+				React.createElement("h1", null, "Scores"),
+				React.createElement(Scoreboard, {className: "results", scores: gameScores})
+			);
+			
+			- Code ReactJS với JSX:
+			<div className="red">Children Text</div>;
+			<MyCounter count={3 + 5} />;
+
+			var gameScores = {
+			  player1: 2,
+			  player2: 5
+			};
+			<DashboardUnit data-index="2">
+			  <h1>Scores</h1>
+			  <Scoreboard className="results" scores={gameScores} />
+			</DashboardUnit>;
+	1.4 Nhúng biểu thức trong JSX: Bạn có thể nhúng bất kỳ biểu thức JavaScript nào trong JSX 
+	bằng cách đóng nó trong dấu ngoặc nhọn. Miễn là biểu thức đó hợp lệ.
+	1.5 JSX cũng là một biểu thức: Sau khi biên dịch, biểu thức JSX trở thành các đối tượng JavaScript 
+	thông thường. Điều này có nghĩa là bạn có thể sử dụng JSX bên trong các câu lệnh if và cho các vòng 
+	lặp, gán nó cho các biến, chấp nhận nó như các đối số, và trả về nó từ các hàm:
+		function getGreeting(user) {
+		  if (user) {
+			return <h1>Hello, {formatName(user)}!</h1>;
+		  }
+		  return <h1>Hello, Stranger.</h1>;
+		}
+	1.6 Thuộc tinhs chỉ định với JSX: 
+		+ Bạn có thể sử dụng dấu ngoặc kép để xác định chuỗi literals như các thuộc tính:
+			const element = <div tabIndex="0"></div>;
+
+		+ Bạn cũng có thể sử dụng dấu ngoặc nhọn để nhúng một biểu thức JavaScript trong một thuộc tính:
+			const element = <img src={user.avatarUrl}></img>;
+
+		+ Không đặt dấu ngoặc kép quanh dấu ngoặc nhọn khi nhúng một biểu thức JavaScript trong một thuộc 
+		tính. Nếu không, JSX sẽ coi thuộc tính là một chuỗi chữ chứ không phải là một biểu thức. Bạn nên 
+		sử dụng dấu ngoặc kép (cho giá trị chuỗi) hoặc dấu ngoặc nhọn (cho các biểu thức), nhưng không 
+		phải cả hai trong cùng một thuộc tính.
+		1.7 Chỉ định Children với JSX
+			+ Nếu một thẻ trống bạn có thể đóng nó ngay lập tức với />, giống như XML
+				const element = <img src={user.avatarUrl} />;
+			+ JSX có thể chứa children 
+				const element = (
+				  <div>
+					<h1>Hello!</h1>
+					<h2>Good to see you here.</h2>
+				  </div>
+				);
+				
+2. Component
+	2.1 Khái niệm: Component là một khối xây dựng độc lập và tái sử dụng được sử dụng để xây dựng giao 
+	diện người dùng. ReactJS sử dụng cú pháp JSX (JavaScript XML) để mô tả cấu trúc và hình dạng của 
+	các component.
+	Mỗi component trong ReactJS đại diện cho một phần tử giao diện cụ thể và có thể chứa logic, dữ liệu 
+	và phương thức riêng. Các component có thể được tổ chức thành cây phân cấp, trong đó mỗi component 
+	có thể chứa các component con bên trong nó.
+
+	Cách định nghĩa một component trong ReactJS thông qua việc tạo một lớp JavaScript hoặc một hàm 
+	JavaScript. Có hai cách phổ biến để định nghĩa component trong ReactJS:
+		+ Class Components
+		+ Function Components
+	2.2 Vòng đời(Life cycle) Component:
+		+ Khái niệm: Life cycle là vòng đời của một sự vật từ khi sinh ra, lớn lên và đến khi mất đi.
+		Life cycle của component trong reactjs là quá trình từ khi tạo ra, thay đổi và hủy bỏ component. 
+		Gồm 3 giai đoạn:
+
+			- Tạo ra (Mounting): gọi những hàm: constructor, render, DidMount
+			- Thay đổi (Updating): gọi những hàm: render, DidUpdate
+			- Hủy bỏ (UnMounting): sẽ gọi hàm: WillUnmount.
+			
+		+ Constructor:
+			- Khi component mouting(tạo ra) sẽ đi qua các hàm Constructor
+			- Trong constructor sẽ khai báo các state, các properties(thuộc tính) của component.
+			- super(props) để gọi hàm khởi tạo của component cha React.Component mà Component con kế thừa.
+			class Clock extends React.Component {
+			  constructor(props) {
+				super(props);
+				this.state = {date: new Date()};
+			  }
+			}
+		+ DidMount()
+			- Khi component được Mounting(tạo ra) sau khi đi qua hàm Constructor và render lần đầu thì sẽ 
+			gọi hàm DidMount().
+			- Thường được dùng để gọi api để lấy dữ liệu, setState để cập nhật state
+			- Hàm DidMount() chỉ chạy một lần duy nhất khi component được tạo ra.
+				componentDidMount() {
+					fetchPosts().then(response => {
+					  this.setState({
+						posts: response.posts
+					  });
+					});
+
+					fetchComments().then(response => {
+					  this.setState({
+						comments: response.comments
+					  });
+					});
+				}
+		+ WillUnMount()
+			- Khi component unmounting (hủy bỏ) ta sẽ gọi hàm WillUnMount().
+			- Khi ta không render component hoặc chuyển trang thì component sẽ bị hủy bỏ để render nội dung 
+			mới lên.
+			- Dùng để hủy timeout, clearInterval. (nếu không hủy bỏ thì sẽ bị chạy hoài liên tục), reset 
+			dữ liệu nếu cần thiết.
+			- Hàm WillUnMount() chỉ chạy 1 lần duy nhất trong vòng đời component. Tương tự như Mount() chỉ
+			chạy 1 lần duy nhất. CÒn DidUpdate() có thể gọi nhiều lần nếu có nhiều update
+				
+				componentWillUnmount() {
+					clearInterval(this.timerID);
+				}
+		
+		+ DidUpdate()
+			- Được dùng khi component Updating (thay đổi ) sẽ gọi hàm DidUpdate()
+			- DidUpdate() có thể không được gọi hoặc gọi nhiều lần nếu có update component.(khi có props 
+			thay đổi, state thay đổi hoặc bắt buộc update (forceUpdate)
+			- Khi render sẽ trigger gọi hàm DidUpdate()
+			- Khi dùng DidUpdate() cần quản lý chặt chẽ các thay đổi của props, state. Nếu không chương trình
+			sẽ bị render nhiều lần gây ra chậm chương trình. Có thể rơi vào lặp vô tận do state thay đổi bên 
+			trong hàm DidUpdate(). 
+	
+	2.3 Function Components 
+		+ Khái niệm: Định nghĩa một hàm JavaScript thông thường trả về JSX. Function components không có 
+		trạng thái và chỉ nhận props làm tham số và trả về JSX.
+		+ Cấu trúc: bao gồm 7 thành phần cơ bản:
+			- import React from 'react';: Import module React để sử dụng các tính năng của ReactJS.
+
+			- function MyComponent(props) { ... }: Khai báo một hàm JavaScript để tạo function component. 
+			Hàm này nhận vào tham số props để truyền dữ liệu từ component cha vào component con.
+
+			- Khởi tạo state (nếu cần): Sử dụng hooks như useState để khởi tạo giá trị trạng thái và cập 
+			nhật trạng thái trong function component.
+
+			- const handleEvent = () => { ... }: Các phương thức xử lý sự kiện. Định nghĩa các hàm để xử 
+			lý các sự kiện trong component.
+
+			- return ( ... ): Trả về JSX để hiển thị giao diện của component. Giao diện được định nghĩa 
+			trong phần trả về và có thể chứa các thành phần và logic JavaScript.
+
+			- export default MyComponent;: Export component để có thể sử dụng ở các file khác trong ứng 
+			dụng.
+		
+		+ Có thể sử dụng các hooks như useState, useEffect, useContext, v.v. để quản lý trạng thái và thực 
+		hiện các tác vụ như gọi API, đăng ký sự kiện, v.v. Function component cung cấp một cách viết ngắn 
+		gọn và dễ hiểu hơn so với class component.
+		
+		+ Ví dụ: 
+			import React from 'react';
+
+			function MyComponent(props) {
+			  // ... Khởi tạo giá trị state nếu cần, sử dụng hooks ...
+
+			  // Các phương thức xử lý sự kiện
+			  const handleEvent = () => {
+				// Xử lý sự kiện
+			  };
+
+			  // Render giao diện của component
+			  return (
+				<div>
+				  {/* Hiển thị giao diện của component */}
+				</div>
+			  );
+			}
+
+			export default MyComponent;
+
+	2.4 Class Components
+		+ Khái niệm: Định nghĩa một lớp JavaScript kế thừa từ lớp Component của React và triển khai phương 
+		thức render(). Class components có thể có trạng thái (state) và phương thức xử lý sự kiện.
+		+ Cấu trúc: bao gồm 7 thành phần cơ bản:
+			- import React from 'react';: Import module React để sử dụng các tính năng của ReactJS.
+
+			- class MyComponent extends React.Component { ... }: Khai báo lớp component và kế thừa từ 
+			lớp Component của React.
+
+			- constructor(props) { ... }: Phương thức constructor, được gọi khi một instance của component 
+			được tạo. Thông qua constructor, bạn có thể khởi tạo trạng thái ban đầu (state) và các biến khác.
+
+			- Lifecycle methods:
+
+				componentDidMount(): Được gọi sau khi component đã được gắn vào DOM. Thường được sử dụng 
+				để thực hiện các tác vụ như lấy dữ liệu từ API, đăng ký sự kiện, v.v.
+				componentDidUpdate(prevProps, prevState): Được gọi sau khi component đã được cập nhật. 
+				Thường được sử dụng để xử lý các thay đổi trong props hoặc state.
+				componentWillUnmount(): Được gọi trước khi component bị gỡ bỏ khỏi DOM. Thường được sử 
+				dụng để hủy đăng ký sự kiện, giải phóng bộ nhớ, v.v.
+			
+			- handleEvent = () => { ... }: Các phương thức xử lý sự kiện. Định nghĩa các phương thức để 
+			xử lý các sự kiện trong component.
+
+			- render() { ... }: Phương thức render, trả về JSX để hiển thị giao diện của component.
+
+			- export default MyComponent;: Export component để có thể sử dụng ở các file khác trong ứng dụng.
+		
+		+ Ví dụ:
+			import React from 'react';
+
+			class MyComponent extends React.Component {
+			  constructor(props) {
+				super(props);
+				// Khởi tạo trạng thái (state) nếu cần
+				this.state = {
+				  // ... Khởi tạo giá trị trạng thái ...
+				};
+			  }
+
+			  componentDidMount() {
+				// Thực thi các logic sau khi component đã được gắn vào DOM
+			  }
+
+			  componentDidUpdate(prevProps, prevState) {
+				// Thực thi các logic sau khi component đã cập nhật (khi props hoặc state thay đổi)
+			  }
+
+			  componentWillUnmount() {
+				// Thực thi các logic trước khi component bị gỡ bỏ khỏi DOM
+			  }
+
+			  handleEvent = () => {
+				// Xử lý sự kiện
+			  }
+
+			  render() {
+				return (
+				  <div>
+					{/* Hiển thị giao diện của component */}
+				  </div>
+				);
+			  }
+			}
+
+			export default MyComponent;
+
+3. Props
+	3.1 Khái niệm:
+		Props (viết tắt của "properties") trong ReactJS là một cách truyền dữ liệu từ component cha vào 
+		component con. Props là một đối tượng (object) chứa các thuộc tính và giá trị tương ứng, được 
+		truyền từ component cha và không thay đổi trong suốt quá trình thực thi của component con.
+	3.2 Cách sử dụng:
+		+ Trong component cha, khi sử dụng component con, bạn có thể truyền dữ liệu thông qua thuộc tính 
+		(attributes) của component con và gán giá trị cho các thuộc tính đó.
+			<ChildComponent prop1="value1" prop2={value2} />
+		+ Trong component con, bạn có thể nhận dữ liệu từ props bằng cách tham chiếu đến các thuộc tính 
+		của đối tượng props. Điều này được thực hiện trong tham số của function component hoặc thông qua 
+		biến this.props trong class component.
+			function ChildComponent(props) {
+			  return (
+				<div>
+				  <p>Prop 1: {props.prop1}</p>
+				  <p>Prop 2: {props.prop2}</p>
+				</div>
+			  );
+			}
+			
+			class ChildComponent extends React.Component {
+			  render() {
+				return (
+				  <div>
+					<p>Prop 1: {this.props.prop1}</p>
+					<p>Prop 2: {this.props.prop2}</p>
+				  </div>
+				);
+			  }
+			}
+
+4. State
+	4.1 Khái niệm:
+		State (trạng thái) trong ReactJS là một đối tượng chứa các dữ liệu có thể thay đổi trong quá trình 
+		thực thi của một component. Trạng thái giúp các component có thể lưu trữ và duy trì thông tin trong 
+		quá trình thay đổi và tái render giao diện người dùng
+	4.2 Cách sử dụng:
+		+ Khởi tạo và truy cập state:
+			- Trong Class Component: Khai báo phương thức constructor để khởi tạo trạng thái ban đầu của 
+			component. Sử dụng this.state để tạo một đối tượng state và gán giá trị ban đầu cho các thuộc 
+			tính của state.
+				class MyComponent extends React.Component {
+				  constructor(props) {
+					super(props);
+					this.state = {
+					  count: 0,
+					  name: 'John',
+					};
+				  }
+
+				  // ...
+				}
+			Có thể truy cập vào các thuộc tính của state thông qua 'this.state.'
+			Sử dụng phương thức this.setState() để cập nhật giá trị của state. React sẽ tự động gọi lại 
+			phương thức render() và cập nhật giao diện người dùng.
+				class MyComponent extends React.Component {
+				  constructor(props) {
+					super(props);
+					this.state = {
+					  count: 0,
+					};
+				  }
+
+				  handleClick = () => {
+					this.setState({ count: this.state.count + 1 });
+				  };
+
+				  render() {
+					return (
+					  <div>
+						<p>Count: {this.state.count}</p>
+						<button onClick={this.handleClick}>Increment</button>
+					  </div>
+					);
+				  }
+				}
+			
+			- Trong Function Component: Sử dụng useState
+				Trong function component, sử dụng hook useState để khởi tạo trạng thái và trả về một cặp 
+				giá trị là giá trị hiện tại của state và hàm để cập nhật giá trị đó.
+				Gọi hàm cập nhật để thay đổi giá trị của state. React sẽ tự động tái render component khi 
+				state thay đổi.
+					import React, { useState } from 'react';
+
+					function MyComponent() {
+					  const [count, setCount] = useState(0);
+
+					  const handleClick = () => {
+						setCount(count + 1);
+					  };
+
+					  return (
+						<div>
+						  <p>Count: {count}</p>
+						  <button onClick={handleClick}>Increment</button>
+						</div>
+					  );
+					}
+
+5. Hook trong ReactJS
+	5.1 Khái niệm:
+		Hooks chính thức được giới thiệu trong phiên bản React 16.8. Nó cho phép chúng ta sử dụng state và 
+		các tính năng khác của React mà không phải dùng đến Class.
+	5.2 useState
+		nhận đầu vào là giá trị khởi tạo của 1 state và trả ra 1 mảng gồm có 2 phần tử, phần tử đầu tiên là 
+		state hiện tại, phần tử thứ 2 là 1 function dùng để update state (giống như hàm setState cũ vậy)
+	
+		ví dụ:
+			const [isLoading, setLoading] = useState(false);
+
+			onClick() {
+				 setLoading(true)
+			 }
+	5.3 useEffect
+		Giúp chúng ta xử lý các side effects, useEffect sẽ tương đương với các hàm componentDidMount, 
+		componentDidUpdate và componentWillUnMount trong LifeCycle
+		
+		ví dụ: 
+			import React, { useState, useEffect } from 'react';
+
+			function Example() {
+			  const [count, setCount] = useState(0);
+
+			  // Tương tự như componentDidMount và componentDidUpdate:
+			  useEffect(() => {
+				// Cập nhập document title sử dụng browser API
+				document.title = `You clicked ${count} times`;
+			  });
+
+			  return (
+				<div>
+				  <p>You clicked {count} times</p>
+				  <button onClick={() => setCount(count + 1)}>
+					Click me
+				  </button>
+				</div>
+			  );
+			}
+	5.4 useReducer
+		Một phiên bản nâng cao hơn dùng để thay thế cho việc sử dụng useState. Nhận vào một reducer dạng 
+		(state, action) và trả ra một newState. Khi sử dụng chúng ta sẽ nhận được một cặp bao gồm current 
+		state và dispatch function
+		
+		ví dụ:
+		const initialState = {count: 0}
+
+		function reducer(state, action) {
+		  const [count, setCount] = useState(0);
+		  switch (action.type) {
+			case 'INCREMENT':
+			  return setCount( count + 1);
+			case 'DECREMENT':
+			  return setCount( count - 1);
+			default:
+			  throw new Error();
+		  }
+		}
+
+		function Counter() {
+		  const [state, dispatch] = useReducer(reducer, initialState)
+		  return (
+			<>
+			  <StyledLogo src={logo} count={count}/>
+			  <Count count={count} />
+			  <div style={{display: 'flex'}}>
+				<button onClick={() => dispatch({type: 'DECREMENT'})}> - </button>
+				<button onClick={() => dispatch({type: 'INCREMENT'})}> + </button>
+			  </div>
+			</>
+		  )
+		}
+	5.5 useMemo
+		Giúp ta kiểm soát việc được render dư thừa của các component con, nó khá giống với hàm 
+		shouldComponentUpdate trong LifeCycle. Bằng cách truyền vào 1 tham số thứ 2 thì chỉ khi 
+		tham số này thay đổi thì thằng useMemo mới được thực thi.
+		ví dụ:
+		
+		const UsingMemo = ({ products }) => {
+		  const soldoutProducts = useMemo(
+			() => products.filter(x => x.isSoldout === true), // / soldoutProducts sẽ chỉ thực thi khi props products thay đổi
+			[products] // watch products
+		  );
+		};
+	
+	5.6 useCallback
+		Có nhiệm vụ tương tự như useMemo nhưng khác ở chỗ function truyền vào useMemo bắt buộc phải 
+		ở trong quá trình render trong khi đối với useCallback đó lại là function callback của 1 event 
+		nào đó như là onClick chẳng hạn.
+		ví dụ:
+		
+			const App = () => {
+			  const [text, setText] = React.useState('');
+
+			  return (
+				<>
+				  <input type="text" value={text} onChange={e => setText(e.target.value)} />
+				  <Wrap />
+				</>
+			  );
+			};
+
+			const Wrap = () => {
+			  const [isChecked, setIsChecked] = React.useState(false);
+			  const toggleChecked = useCallback(() => setIsChecked(!isChecked), [
+				isChecked
+			  ]);
+
+			  return <Checkbox value={isChecked} onClick={toggleChecked} />;
+			};
+
+			const Checkbox = React.memo(({ value, onClick }) => {
+			  console.log('Checkbox is renderd!');
+			  return (
+				<div style={{ cursor: 'pointer' }} onClick={onClick}>
+				  {value ? '☑' : '□'}
+				</div>
+			  );
+			});
