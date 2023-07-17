@@ -1,0 +1,77 @@
+1. useContext
+	1.1. Khái niệm
+		useContext là một hook trong React được sử dụng để truy cập vào context trong functional components. 
+		Context cho phép bạn chia sẻ dữ liệu giữa các thành phần con trong cây component mà không cần truyền 
+		qua props qua nhiều cấp độ.
+	1.2. Cú pháp
+		+ Tạo context bằng cách sử dụng React.createContext().
+		+ Truyền dữ liệu vào context bằng cách sử dụng <Context.Provider value={data}> trong component cha.
+		+ Sử dụng useContext(Context) trong các component con để truy cập vào giá trị của context.
+	1.3. Cách sử dụng
+		// Tạo context
+		const MyContext = React.createContext();
+
+		// Truyền dữ liệu vào context
+		function App() {
+		  const data = "Hello, world!";
+
+		  return (
+			<MyContext.Provider value={data}>
+			  <ChildComponent />
+			</MyContext.Provider>
+		  );
+		}
+
+		// Sử dụng useContext trong component con
+		function ChildComponent() {
+		  const contextData = useContext(MyContext);
+
+		  return <p>{contextData}</p>;
+		}
+
+	1.4 Ưu điểm
+		+ Giúp truyền dữ liệu giữa các thành phần con một cách thuận tiện mà không cần truyền qua props 
+		qua nhiều cấp độ.
+		+ Giảm bớt việc truyền props qua nhiều cấp độ, giúp code dễ đọc hơn và giảm sự lẫn lộn giữa các 
+		thành phần không liên quan.
+		+ Tiết kiệm thời gian và công sức khi phải truyền dữ liệu qua nhiều thành phần trung gian.
+	1.5 Nhược điểm
+		+ Context không phù hợp cho việc truyền dữ liệu từ một thành phần cha tới thành phần cháu, nghĩa 
+		là context chỉ thích hợp cho các thành phần con của thành phần cha.
+		+ Khi sử dụng quá nhiều context, mã nguồn có thể trở nên phức tạp và khó quản lý.
+		+ Khi context thay đổi, tất cả các thành phần sử dụng context đó sẽ được render lại, điều này có 
+		thể gây tốn hiệu năng nếu không được quản lý cẩn thận.
+2. useRef
+	2.1. Khái niệm
+		useRef là một hook trong React được sử dụng để tạo một tham chiếu (reference) không thay đổi giữa 
+		các lần render của component. Nó cho phép truy cập và thay đổi các phần tử DOM hoặc giá trị 
+		khác mà không gây ra việc render lại component.
+	2.2. Cú pháp
+		Để sử dụng useRef, bạn cần import useRef từ thư viện React và khởi tạo một biến tham chiếu trong 
+		component bằng cách gọi useRef().
+	2.3. Cách sử dụng
+		import React, { useRef } from 'react';
+
+		function MyComponent() {
+		  const inputRef = useRef(null);
+
+		  const handleClick = () => {
+			inputRef.current.focus();
+		  };
+
+		  return (
+			<div>
+			  <input ref={inputRef} type="text" />
+			  <button onClick={handleClick}>Focus Input</button>
+			</div>
+		  );
+		}
+
+	2.4 Ưu điểm
+		+ Cho phép bạn lưu trữ và truy cập các giá trị mà không gây ra việc render lại component.
+		+ Rất hữu ích khi làm việc với các tham chiếu tới phần tử DOM như focus, scroll, hoặc các thao 
+		tác DOM khác.
+		+ Dễ dàng thay đổi giá trị của biến tham chiếu.
+	2.5 Nhược điểm
+		Cẩn thận khi sử dụng useRef để thay đổi giá trị của biến tham chiếu, vì điều này không gây ra việc 
+		render lại component và có thể làm mất tính nhất quán giữa UI và state.
