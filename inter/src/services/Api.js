@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const url = "http://localhost:2001/inters";
+const url = "http://localhost:3000/inters";
 
 export const getAllInter = async (id) => {
     id = id || '';
@@ -19,3 +19,4 @@ export const editInter = async (id, inter) => {
 export const deleteInter = async (id) => {
     return await axios.delete(`${url}/${id}`);
 }
+
