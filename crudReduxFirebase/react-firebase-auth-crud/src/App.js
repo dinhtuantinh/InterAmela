@@ -31,12 +31,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <ToastContainer position="top-center" />
+        <ToastContainer position="bottom-right" />
         <Switch>
           <UserRoute exact path="/" component={Product} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <UserRoute path="/addContact" component={AddEdit} />
+          <UserRoute path="/addProduct" component={AddEdit} />
           <UserRoute path="/update/:id" component={AddEdit} />
           <UserRoute path="/view/:id" component={View} />
           <Route path="/home" component={Home} />

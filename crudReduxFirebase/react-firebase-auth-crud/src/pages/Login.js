@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import {
-  googleSignInInitiate,
-  loginInitiate,
+  googleSignInInit,
+  loginInit,
 } from "../redux/actions/actions";
 import "./css/Login.css";
 
@@ -21,14 +21,14 @@ const Login = () => {
 
   useEffect(() => {
     if (currentUser) {
-      history.push("/");
+      history.push("/home");
     }
   }, [currentUser, history]);
 
   const dispatch = useDispatch();
 
   const handleGoogleSignIn = () => {
-    dispatch(googleSignInInitiate());
+    dispatch(googleSignInInit());
   };
 
   const handleSubmit = (e) => {
@@ -36,7 +36,7 @@ const Login = () => {
     if (!email || !password) {
       return;
     }
-    dispatch(loginInitiate(email, password));
+    dispatch(loginInit(email, password));
     setState({ email: "", password: "" });
   };
 
@@ -57,7 +57,7 @@ const Login = () => {
           <input
             type="email"
             id="inputEmail"
-            className="form-control"
+            className="form-control input-email"
             placeholder="Email"
             name="email"
             onChange={handleChange}
@@ -75,6 +75,9 @@ const Login = () => {
             required
           />
           <p style={{ textAlign: "center" }}></p>
+          <button className="btn btn-success btn-block btn-login" type="submit">
+            <i className="fas fa-sign-in-alt"></i> Đăng nhập
+          </button>
           <div className="social-login">
             <button
               className="btn google-btn social-btn"
@@ -86,9 +89,6 @@ const Login = () => {
               </span>
             </button>
           </div>
-          <button className="btn btn-success btn-block" type="submit">
-            <i className="fas fa-sign-in-alt"></i> Đăng nhập
-          </button>
           <hr />
           <p>Bạn chưa có tài khoản?</p>
           <Link to="/register">

@@ -8,7 +8,7 @@ const Product = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    firebaseDB.child("contacts").on("value", (snapshot) => {
+    firebaseDB.child("products").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -23,13 +23,13 @@ const Product = () => {
 
   const onDelete = (id) => {
     if (
-      window.confirm("Are you sure that you wanted to delete that contact ?")
+      window.confirm("Bạn có chắc muốn xóa sản phẩm này ?")
     ) {
-      firebaseDB.child(`contacts/${id}`).remove((err) => {
+      firebaseDB.child(`products/${id}`).remove((err) => {
         if (err) {
           toast.error(err);
         } else {
-          toast.success("Contact Deleted Successfully");
+          toast.success("Xóa sản phẩm thành công");
         }
       });
     }
@@ -39,10 +39,10 @@ const Product = () => {
       <table className="styled-table">
         <thead>
           <tr>
-            <th style={{ textAlign: "center" }}>Id</th>
-            <th style={{ textAlign: "center" }}>Name</th>
-            <th style={{ textAlign: "center" }}>Email</th>
-            <th style={{ textAlign: "center" }}>Contact</th>
+            <th style={{ textAlign: "center" }}>STT</th>
+            <th style={{ textAlign: "center" }}>Tên</th>
+            <th style={{ textAlign: "center" }}>Mô tả</th>
+            <th style={{ textAlign: "center" }}>Số lượng</th>
             <th style={{ textAlign: "center" }}>Action</th>
           </tr>
         </thead>
@@ -52,13 +52,12 @@ const Product = () => {
               <tr key={id}>
                 <th scope="row">{index + 1}</th>
                 <td>{data[id].name}</td>
-                <td>{data[id].email}</td>
-                <td>{data[id].contact}</td>
+                <td>{data[id].desc}</td>
+                <td>{data[id].quantity}</td>
                 <td>
                   <Link to={`/update/${id}`}>
                     <button className="bttn btn-edit">Edit</button>
                   </Link>
-
                   <button
                     className="bttn btn-delete"
                     onClick={() => onDelete(id)}

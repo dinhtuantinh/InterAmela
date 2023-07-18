@@ -62,7 +62,7 @@ export const setUser = (user) => ({
 });
 
 
-export const registerInitiate = (email, password, displayName) => {
+export const registerInit = (email, password, displayName) => {
   return function (dispatch) {
     dispatch(registerStart());
     auth
@@ -77,7 +77,7 @@ export const registerInitiate = (email, password, displayName) => {
   };
 };
 
-export const loginInitiate = (email, password) => {
+export const loginInit = (email, password) => {
   return function (dispatch) {
     dispatch(loginStart());
     auth
@@ -89,7 +89,7 @@ export const loginInitiate = (email, password) => {
   };
 };
 
-export const googleSignInInitiate = () => {
+export const googleSignInInit = () => {
   return function (dispatch) {
     dispatch(googleSignInStart());
     auth
@@ -101,7 +101,7 @@ export const googleSignInInitiate = () => {
   };
 };
 
-export const logoutInitiate = () => {
+export const logoutInit = () => {
   return function (dispatch) {
     dispatch(logoutStart());
     auth

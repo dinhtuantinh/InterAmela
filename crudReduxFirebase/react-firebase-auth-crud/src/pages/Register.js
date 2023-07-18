@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { registerInitiate } from "../redux/actions/actions";
+import { registerInit } from "../redux/actions/actions";
 import "./css/Register.css";
 
 const Register = () => {
@@ -31,7 +31,7 @@ const Register = () => {
     if (password !== passwordConfirm) {
       return;
     }
-    dispatch(registerInitiate(email, password, displayName));
+    dispatch(registerInit(email, password, displayName));
     setState({ email: "", displayName: "", password: "", passwordConfirm: "" });
   };
   const handleChange = (e) => {
@@ -78,7 +78,7 @@ const Register = () => {
             value={password}
             required
           />
-
+          
           <input
             type="password"
             id="passwordConfirm"

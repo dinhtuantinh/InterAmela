@@ -4,19 +4,19 @@ import { useParams, Link } from "react-router-dom";
 import "./css/View.css";
 
 const View = () => {
-  const [user, setUser] = useState({});
+  const [product, setProduct] = useState({});
 
   const { id } = useParams();
 
   useEffect(() => {
     firebaseDB
-      .child(`contacts/${id}`)
+      .child(`products/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setUser({ ...snapshot.val() });
+          setProduct({ ...snapshot.val() });
         } else {
-          setUser({});
+          setProduct({});
         }
       });
   }, [id]);
@@ -25,23 +25,19 @@ const View = () => {
     <div style={{ marginTop: "150px" }}>
       <div className="card">
         <div className="card-header">
-          <p>User Contact Detail</p>
+          <p>Mô tả chi tiết sản phẩm</p>
         </div>
         <div className="container">
-          <strong>ID: </strong>
-          <span>{id}</span>
+          <strong>Tên: </strong>
+          <span>{product.name}</span>
           <br />
           <br />
-          <strong>Name: </strong>
-          <span>{user.name}</span>
+          <strong>Mô tả </strong>
+          <span>{product.desc}</span>
           <br />
           <br />
-          <strong>Email: </strong>
-          <span>{user.email}</span>
-          <br />
-          <br />
-          <strong>Contact: </strong>
-          <span>{user.contact}</span>
+          <strong>Số lượng: </strong>
+          <span>{product.quantity}</span>
           <br />
           <br />
           <Link to="/">
