@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { registerInit } from "../redux/actions/actions";
 import "./css/Register.css";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [state, setState] = useState({
@@ -18,7 +19,8 @@ const Register = () => {
 
   useEffect(() => {
     if (currentUser) {
-      history.push("/");
+      history.push("/home");
+      toast.success("Thêm tài khoản thành công")
     }
   }, [currentUser, history]);
 
@@ -29,6 +31,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
+      toast.error("Mật khẩu chưa trùng khớp!")
       return;
     }
     dispatch(registerInit(email, password, displayName));

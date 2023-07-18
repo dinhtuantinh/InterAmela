@@ -6,6 +6,7 @@ import {
   loginInit,
 } from "../redux/actions/actions";
 import "./css/Login.css";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [state, setState] = useState({
@@ -22,6 +23,7 @@ const Login = () => {
   useEffect(() => {
     if (currentUser) {
       history.push("/home");
+      toast.success("Đăng nhập thành công")
     }
   }, [currentUser, history]);
 
