@@ -35,15 +35,15 @@ const Product = () => {
     }
   };
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div className="container-products">
       <table className="styled-table">
         <thead>
           <tr>
-            <th style={{ textAlign: "center" }}>STT</th>
-            <th style={{ textAlign: "center" }}>Tên</th>
-            <th style={{ textAlign: "center" }}>Mô tả</th>
-            <th style={{ textAlign: "center" }}>Số lượng</th>
-            <th style={{ textAlign: "center" }}>Action</th>
+            <th className="column-name">STT</th>
+            <th className="column-name">Tên</th>
+            <th className="column-name">Mô tả</th>
+            <th className="column-name">Số lượng</th>
+            <th className="column-name">Action</th>
           </tr>
         </thead>
         <tbody>

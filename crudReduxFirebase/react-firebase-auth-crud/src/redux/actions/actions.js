@@ -69,7 +69,7 @@ export const registerInit = (email, password, displayName) => {
       .createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         user.updateProfile({
-          displayName,
+          displayName
         });
         dispatch(registerSuccess({ user, additionalData: { displayName } }));
       })

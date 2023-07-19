@@ -51,8 +51,7 @@ const Login = () => {
       <div id="logreg-forms">
         <form className="form-signin" onSubmit={handleSubmit}>
           <h1
-            className="h3 mb-3 font-weight-normal"
-            style={{ textAlign: "center" }}
+            className="h3 mb-3 font-weight-normal title-login"
           >
             Đăng nhập
           </h1>

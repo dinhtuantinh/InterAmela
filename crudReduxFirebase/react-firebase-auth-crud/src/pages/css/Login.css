@@ -93,6 +93,10 @@
   margin-bottom: 20px;
 }
 
+.title-login {
+  text-align: center;
+}
+
 @media screen and (max-width: 500px) {
   #logreg-forms {
     width: 300px;

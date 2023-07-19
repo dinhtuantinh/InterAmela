@@ -22,12 +22,12 @@ const View = () => {
   }, [id]);
   
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div className="view-body">
       <div className="card">
         <div className="card-header">
           <p>Mô tả chi tiết sản phẩm</p>
         </div>
-        <div className="container">
+        <div className="container-view">
           <strong>Tên: </strong>
           <span>{product.name}</span>
           <br />

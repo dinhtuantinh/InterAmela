@@ -1,3 +1,15 @@
+.container {
+  margin-top: 100px;
+}
+
+.form-submit {
+  margin: auto;
+  padding: 15px;
+  max-width: 400px;
+  align-content: center;
+  border: 1px solid rgb(82, 98, 247);
+}
+
 input[type="text"],
 input[type="email"],
 input[type="number"],
@@ -29,4 +41,8 @@ input[type="submit"]:hover {
 .form-label {
   width: 100%;
   text-align: left !important;
+}
+
+.btn-submit {
+  width: 50% !important;
 }

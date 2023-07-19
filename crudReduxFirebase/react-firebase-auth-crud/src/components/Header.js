@@ -30,7 +30,7 @@ const Header = () => {
   }, [location]);
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/home">
         <p className="logo">TuanTinh App</p>
       </Link>
       <div className="header-right">

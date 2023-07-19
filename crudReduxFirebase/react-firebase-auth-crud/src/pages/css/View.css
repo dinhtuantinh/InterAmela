@@ -1,3 +1,7 @@
+.view-body {
+  margin-top: 150px;
+}
+
 .card {
   width: 40%;
   display: flex;
@@ -23,6 +27,6 @@
   font-size: 20px;
 }
 
-.container {
+.container-view {
   padding: 4px 16px;
 }

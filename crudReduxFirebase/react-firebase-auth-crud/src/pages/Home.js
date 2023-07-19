@@ -1,8 +1,9 @@
 import React from "react";
+import "./css/Home.css";
 
 const About = () => {
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div className="container">
       <h2>
         {" "}
         Chào mừng đến với website Tuan Tinh

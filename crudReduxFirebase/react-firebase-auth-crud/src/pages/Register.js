@@ -46,8 +46,7 @@ const Register = () => {
       <div id="register-form">
         <form className="form-signup" onSubmit={handleSubmit}>
           <h1
-            className="h3 mb-3 font-weight-normal"
-            style={{ textAlign: "center" }}
+            className="h3 mb-3 font-weight-normal title-register"
           >
             Đăng ký
           </h1>

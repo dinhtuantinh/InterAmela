@@ -1,3 +1,7 @@
+.container-products {
+  margin-top: 100px;
+}
+
 .styled-table {
   border-collapse: collapse;
   margin: auto;
@@ -5,6 +9,10 @@
   font-family: sans-serif;
   width: 1440px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.column-name {
+  text-align: center;
 }
 
 @media screen and (max-width: 800px) {

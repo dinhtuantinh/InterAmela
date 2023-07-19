@@ -50,7 +50,7 @@ const AddEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !desc || !quantity) {
-      toast.error("Vui lòng nhập đủ các trường đầu vào");
+      toast.error("Vui lòng điền đầy đủ thông tin!");
     } else {
       if (!id) {
         firebaseDB.child("products").push(state, (err) => {
@@ -75,15 +75,9 @@ const AddEdit = () => {
     }
   };
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div className="container">
       <form
-        style={{
-          margin: "auto",
-          padding: "15px",
-          maxWidth: "400px",
-          alignContent: "center",
-          border: "1px solid rgb(82, 98, 247)",
-        }}
+        className="form-submit"
         onSubmit={handleSubmit}
       >
         <label className="form-label" htmlFor="name">Tên</label>
@@ -113,7 +107,7 @@ const AddEdit = () => {
           value={quantity || ""}
           onChange={handleInputChange}
         />
-        <input type="submit" value={id ? "Sửa" : "Lưu"} />
+        <input className="btn-submit" type="submit" value={id ? "Sửa" : "Lưu"} />
       </form>
     </div>
   );

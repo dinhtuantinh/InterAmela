@@ -88,6 +88,10 @@
    margin: 0 auto;
  }
 
+ .title-register {
+   text-align: center;
+ }
+
  /* Mobile */
 
  @media screen and (max-width: 500px) {
