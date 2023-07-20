@@ -24,17 +24,6 @@
   z-index: 2;
 }
 
-#logreg-forms .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-#logreg-forms .form-signin input[type="password"] {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 #logreg-forms .social-login {
   width: 390px;
   margin: 0 auto;
@@ -64,11 +53,11 @@
 }
 
 #logreg-forms .facebook-btn {
-  background-color: #3c589c;
+  background-color: blue;
 }
 
 #logreg-forms .google-btn {
-  background-color: #df4b3b;
+  background-color: red;
   margin-right: 5px;
 }
 
@@ -87,6 +76,7 @@
 
 .input-email {
   margin-bottom: 20px !important;
+
 }
 
 .btn-login {
@@ -122,10 +112,6 @@
 
   #logreg-forms .social-btn span {
     display: none;
-  }
-
-  #logreg-forms .facebook-btn:after {
-    content: "Facebook";
   }
 
   #logreg-forms .google-btn:after {

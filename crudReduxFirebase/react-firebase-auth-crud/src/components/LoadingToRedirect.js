@@ -15,7 +15,6 @@ const LoadingToRedirect = () => {
   }, [count, history]);
   return (
     <div>
-      <p>Loading ...</p>
     </div>
   );
 };
