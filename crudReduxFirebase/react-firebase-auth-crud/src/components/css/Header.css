@@ -26,6 +26,11 @@
   color: #5d6770;
 }
 
+.header p.logo:hover {
+  background-color: #f1f1f1 !important;
+  color: #4284f5 !important;
+}
+
 .header p.active {
   background-color: dodgerblue;
   color: white;

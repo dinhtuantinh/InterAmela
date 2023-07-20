@@ -55,6 +55,9 @@ const Product = () => {
                 <td>{data[id].desc}</td>
                 <td>{data[id].quantity}</td>
                 <td>
+                  <Link to={`/view/${id}`}>
+                    <button className="bttn btn-view">View</button>
+                  </Link>
                   <Link to={`/update/${id}`}>
                     <button className="bttn btn-edit">Edit</button>
                   </Link>
@@ -64,9 +67,6 @@ const Product = () => {
                   >
                     Delete
                   </button>
-                  <Link to={`/view/${id}`}>
-                    <button className="bttn btn-view">View</button>
-                  </Link>
                 </td>
               </tr>
             );
