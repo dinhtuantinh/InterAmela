@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Product from "./pages/Product";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Product from "./pages/product/Product";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 import UserRoute from "./components/UserRoute";
 import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
 import { setUser } from "./redux/actions/actions";
 import Header from "./components/Header";
-import AddEdit from "./pages/AddEdit";
-import Home from "./pages/Home";
+import AddEdit from "./pages/product/AddEdit";
+import Home from "./pages/auth/Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import View from "./pages/View";
+import View from "./pages/product/View";
 
 function App() {
   const dispatch = useDispatch();
