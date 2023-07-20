@@ -54,7 +54,6 @@ const AddEdit = () => {
     } else {
       if (!id) {
         firebaseDB.child("products").push(state, (err) => {
-          console.log("state", state);
           if (err) {
             toast.error(err);
           } else {
@@ -63,7 +62,6 @@ const AddEdit = () => {
         });
       } else {
         firebaseDB.child(`products/${id}`).set(state, (err) => {
-          console.log("state", state);
           if (err) {
             toast.error(err);
           } else {
