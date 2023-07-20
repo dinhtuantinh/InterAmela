@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db as firebaseDB } from "../firebase";
+import { db as firebaseDB } from "../../firebase";
 import { useParams, Link } from "react-router-dom";
 import "./css/View.css";
 
@@ -32,7 +32,7 @@ const View = () => {
           <span>{product.name}</span>
           <br />
           <br />
-          <strong>Mô tả </strong>
+          <strong>Mô tả: </strong>
           <span>{product.desc}</span>
           <br />
           <br />

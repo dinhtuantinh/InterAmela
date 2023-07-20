@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { db as firebaseDB } from "../firebase";
+import { db as firebaseDB } from "../../firebase";
 import { toast } from "react-toastify";
 import "./css/Product.css";
 

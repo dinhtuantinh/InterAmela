@@ -4,7 +4,7 @@ import { useHistory, Link } from "react-router-dom";
 import {
   googleSignInInit,
   loginInit,
-} from "../redux/actions/actions";
+} from "../../redux/actions/actions";
 import "./css/Login.css";
 import { toast } from "react-toastify";
 
