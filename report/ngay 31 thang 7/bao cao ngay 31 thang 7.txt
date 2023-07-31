@@ -1,0 +1,123 @@
+1. Các kiểu dữ liệu trong typescript
+  Trong Typescript có các kiểu dữ liệu cơ bản như boolean, number, string, array, 
+  tuple, enum, any, void, null và undefined
+
+  1.1 Kiểu boolean
+    Kiểu boolean có hai giá trị là true hoặc false
+    TS:
+      let isDone: boolean = false;
+    Kết quả JS: 
+      var isDone = false;
+
+  1.2 Kiểu Number
+    Giống như JS thì trong TS cũng chỉ tông tại một kiểu Number, còn việc hân chia 
+    nhỏ hơn như sôa nguyên, số thực sẽ phụ thuộc vào giá trị mà ta gán cho nó.
+    Trong TS cũng hỗ trọe kiểu nhị phân và bát phân được giới thiệu trong ECMAScript 
+    2015
+    TS:
+      var decimal: number = 12;
+      var hex: number = 0xf00d;
+      var binary: number = 0b1010;
+      var octal: number = 0o744;
+    Kết quả JS:
+      var decimal = 12;
+      var hex = 0xf00d;
+      var binary = 10;
+      var octal = 44; 
+
+  1.3 Kiểu String
+    Kiểu string đơn giản là một chuỗi(một đoạn text) được bao bọc bởi ký tự ' hoặc ".
+    TS:
+      var username: string = 'tinhdinh';
+    Kết quả JS: 
+      var username = 'tinhdinh';
+
+  1.4 Kiểu Array
+    Ta có hai cách khai báo kiểu Array, cách thứ nhất là dùng dấu [] đặt ở đằng sau 
+    kiểu dữ liệu.
+    let students: string[] = ['Tinh', 'Dinh'];
+    Cách thứ 2 hai sử dụng từ khóa Array<type> để khai báo
+    let students: Aray<string> = ['Tinh', 'Dinh'];
+
+  1.5 Kiểu Tuple
+    Tuple là kiểu dữ liệu đặc biệt có thể chứa nhiều giá trị với nhiều kiểu dữ liệu 
+    con khác nhau. Thực ra là một mảng nhưng đã xác định được số phần tử và kiểu dữ
+    liệu cho mỗi phần tử đó. Ví dụ mình khái báo biến student gồm hai thông tin đó
+    là tên và tuổi thì lúc này tên sẽ là kiểu string còn tuổi sẽ là kiểu number.
+    TS: 
+      let student: [string, number] = ['Tinh', 22];
+    Kết quả JS:
+      var student = ['Tinh', 22];
+
+  1.6 Kiểu Enum
+    Tương tự như trong C#, Enum là kiểu dữ liệu đặc biệt dùng để tạo một nhóm tên
+    tương ứng với các giá trị là những con số mà ta thiết lập cho nó, cách này sẽ
+    giúp ta dễ dàng nhớ tên hơn.
+    TS:
+      enum Fruits {Orange, Banana, Mango, Apple};
+      let a: Fruits = Fruits.Orange;
+      alert(a);
+    Kết quả JS:
+      var Fruits;
+      (function (Fruits){
+        Fruits[Fruits["Orange] = 0] = "Orange";
+        Fruits[Fruits["Banana] = 1] = "Banana";
+        Fruits[Fruits["Mango] = 2] = "Mango";
+        Fruits[Fruits["Apple] = 3] = "Apple";
+      })(Fruits || (Fruits = {}));
+      var a = Fruits.Orange;
+      alert(a);
+    Khi chạy chương trình này kết quả sẽ thông báo lên trình duyệt số 0 => như vậy 
+    nếu ta không thiết lập giá trị cho chúng thì nó sẽ tính theo thứ tự và bắt đầu 
+    bằng 0.
+
+    Bây giờ đổi đoạn code TS trên thành như sau:
+    TS:
+      enum Fruits {Orange = 12, Banana, Mango, Apple};
+      let a: Fruits = Fruits.Orange;
+      alert(a);
+    Kết quả JS:
+      var Fruits;
+      (function (Fruits){
+        Fruits[Fruits["Orange] = 12] = "Orange";
+        Fruits[Fruits["Banana] = 1]3 = "Banana";
+        Fruits[Fruits["Mango] = 14] = "Mango";
+        Fruits[Fruits["Apple] = 15] = "Apple";
+      })(Fruits || (Fruits = {}));
+      var a = Fruits.Orange;
+      alert(a);
+    Nhìn vào đoạn code biên dịch ta thấy số thứ tự bắt đầu từ 12.
+    Để thiết lập giá trị cho từng phần tử ta sẽ gán trực tiếp cho chúng bằng dấu =.
+  
+  1.7 Kiểu Any
+    Đây là kiểu dữ liệu thoải mái nhất bởi nó cho phép bạn gán giá trị với kiểu dữ 
+    liệu bất kỳ, điều này giúp giải quyết một số trường hợp, ví dụ ta cần lấy dữ 
+    liệu từ người dùng hoặc một thư viện khác thì ta không biết giá trị trả về sẽ 
+    ở kiểu dữ liệu nào nên ta sẽ sử dụng kiểu Any để tránh lỗi.
+    TS: 
+      let notSure: any = 4; // Kiểu number
+      notSure = "Thay thế kiểu string";
+      notSure = false;// bây giờ lại là kiểu boolean
+    Kết quả JS:
+      var notSure = 4; // kiểu number
+      notSure = "Thay thế kiểu string";
+      notSure = false;// bây giờ lại là kiểu boolean
+    Ngoài các kiểu dữ liệu đơn giản thì Any còn kết hợp được với các kiểu dữ liệu 
+    phức tạp
+      let list: any[] = [1, true, "free"];
+  
+  1.8 Kiểu Void
+    Trong C# thì khi muốn khai báo một hàm không có giá trị trả về thì ta sẽ sử dụng 
+    hàm void, tuy ta hay gọi làm hàm void nhưng thực ra nó là một kiểu dữ liệu với 
+    giá trị null, trong TypeScript thì có thêm giá trị undefined.
+      function showMessage(): void {
+        alert("Success!");
+      }
+      let unusable: void = undefined;
+
+  1.9 Kiểu Null và Undefined
+    Cả hai kiểu này đều là giá trị của kiểu void, và cũng tương tự thì hai kiểu này 
+    rất ít sử dụng trong quá trình xấy dựng dự án.
+      let u: undefined = undefined;
+      let n: null  = null;
+  

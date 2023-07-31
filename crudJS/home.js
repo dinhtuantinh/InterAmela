@@ -15,7 +15,7 @@ let output = `
         <th scope="col">Delete</th>
     </tr>`;
 
-const url = 'http://localhost:3000/user';
+const url = 'http://localhost:2000/user';
 
 //GET
 const renderUser = (users) =>{
