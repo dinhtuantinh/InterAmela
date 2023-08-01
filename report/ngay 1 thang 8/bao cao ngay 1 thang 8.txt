@@ -1,0 +1,373 @@
+1. Combining Types
+  1.1 Type Union
+    Các kiểu kết hợp trong TS cho phép bạn chỉ đingh nhiều kiểu có thể có cho một 
+    biến hoặc tham số. Loại kết hợp được viết dưới dạng | danh sách các loại được 
+    phân tách bằng thanh dọc.
+      function combine(input1: string | number, input2: string | number) {
+        return input1 + input2;
+      }
+  1.2 Type intersection
+    Loại giao nhau tạo ra một loại mới bằng cách kết hợp nhiều loại hiện có. Loại
+    mới có tất cả các tính năng của các loại hiện có.
+    Để kết hợp các loại, bạn sử dụng toán tử &:
+      type typeAB = typeA & typeB;
+    typeAB sé có tất cả các thuộc tính từ cả typeA và typeB.
+  1.3 Type Aliases
+    Loại bí danh trong TS cho phép bạn tạo tên mới cho một loại
+      type Name = string;
+      type Age = number;
+      type User = {name: Name; age: Age};
+
+      const user: User = {name: 'John', age: 30};
+    Trong ví dụ trên Name và Age là loại bí danh cho string và number tương ứng. 
+    Và User là một loại bí danh cho một đối tượng có các thuộc tính name của loại 
+    Name và age loại Age. 
+  1.4 Keyof operator
+    Toán tử keyof trong TS được sử dụng để lấy tổ hợp các khóa từ môth loại đối 
+    tượng.
+      interface User {
+        name: string;
+        age: number;
+        location: string;
+      }
+
+      type UserKeys = keyof User; // "name" | "age" | "location"
+      const key: UserKeys = 'name'
+    Trong ví dụ này, UserKeys là một loại đại diện cho sự kết hợp của các phím từ 
+    User giao diện, đó là "name" | "age" | "location". Và một hằng số được đặt tên 
+    key với kiểu UserKeys được khai báo với giá trị "name".
+
+2. Type Guards
+  2.1 Instanceof
+    Toán tử instanceof là một cách để thu hẹp loại biến. Nó được sử dụng để kiểm tra 
+    xem một đối tượng có phải là một thể hiện của một lớp, giao diện hay kiểu không.
+      class Bird {
+        fly() {
+          console.log('flying...');
+        }
+        layEggs() {
+          console.log('laying eggs...');
+        }
+      }
+
+      const pet = new Bird();
+
+      // instanceof
+      if (pet instanceof Bird) {
+        pet.fly();
+      } else {
+        console.log('pet is not a bird');
+      }
+  2.2 Typeof
+    Toán tử typeof được sử dụng để kiểm tra kiểu của một biến. Nó trả về một giá trị
+    chuỗi đại diện cho loại biến.
+      let value: string | number = 'hello';
+
+      if (typeof value === 'string') {
+        console.log('value is a string');
+      } else {
+        console.log('value is a number');
+      }
+
+3. TypeScript Functions
+  3.1 Typing Functions
+    Trong TS các hàm có thể được nhập theo một số cách khác nhau để chỉ ra các tham 
+    số đầu vào và kiểu trả về của hàm.
+    Khai báo hàm với các kiểu:
+      function add(a: number, b: number): number {
+        return a + b;
+      }
+    
+    Chức năng mũi tên với các loại:
+      const multiply = (a: number, b: number): number => {
+        return a * b;
+      };
+    
+    Loại chức năng:
+      let divide: (a: number, b: number) => number;
+      divide = (a, b) => {
+        return a / b;
+      };
+  3.2 Function Overloading
+    Overloading trong TS cho phép xác đingj nhiều hàm có cùng tên nhưng có các tham
+    số khác nhau. Hàm chính xác để gọi được xác định dựa trên số lượng, loại và thứ
+    tự của các đối số được truyền cho hàm khi chạy.
+
+      function add(a: number, b: number): number;
+      function add(a: string, b: string): string;
+
+      function add(a: any, b: any): any {
+        return a + b;
+      }
+
+      console.log(add(1, 2)); // 3
+      console.log(add('Hello', ' World')); // "Hello World"
+
+4. TypeScript Interfaces
+  4.1 Types vs Interfaces
+    Trong TS, cả hai loại và giao diện đều có thể được sử dụng để xác định cấu trúc
+    của các đối tượng và thực thi kiểm tra loại. Tuy nhiên , có một số khác biệt giữa
+    hai.
+    Các loại được sử dụng để tạo một loại được đặt tên mới dựa trên một loại hiện có
+    hoặc kết hợp các loại hiện có thành một loại mới. Chúng có thể được tạo bằng từ 
+    khóa type.
+
+      type Person = {
+        name: string;
+        age: number;
+      };
+
+      const person: Person = {
+        name: 'John Doe',
+        age: 30,
+      };
+    Mặt khác, các giao diện được sử dụng để mô tả cấu trúc của các đối tượng và các
+    lớp. Chúng có thể được tạo bằng từ khóa giao diện:
+
+      interface Person {
+        name: string;
+        age: number;
+      }
+
+      const person: Person = {
+        name: 'John Doe',
+        age: 30,
+      };
+  4.2 Extending Interfaces
+    Trong TS, bạn có thể mở rộng ột giao diện bằng cách tạo ra một giao diện mới kế
+    thừa từ giao diện ban đầu bằng cách sửa dụng từ khóa "extends". Giao diện mới 
+    có thể bao gồn các thuộc tính, phương thức bổ dung hoặc xác định lại các thành 
+    viên của giao diện gốc.
+
+      interface Shape {
+        width: number;
+        height: number;
+      }
+
+      interface Square extends Shape {
+        sideLength: number;
+      }
+
+      let square: Square = {
+        width: 10,
+        height: 10,
+        sideLength: 10,
+      };
+  4.3 Interface Declaration
+    Một interface trong TS là một kết hoạch chi tiết để tạo các đối tượng có cấu trúc 
+    cụ thể. Một interface định nghĩa một tập hợp các thuộc tính, phương thức và sự 
+    kiện mà một lớp hoặc đối tượng phải thực hiện. Giao diện làm ột hợp đồng giữa các
+    đối tượng và các lớp và có thể được sử dụng để thực thi một cấu trúc cụ thể cho 
+    các đối tượng trong mã của bạn.
+    Ví dụ khai báo giao diện trong TS:
+      interface Person {
+        firstName: string;
+        lastName: string;
+        age?: number;
+
+        getFullName(): string;
+      }
+    Trong ví dụ này, giao diện Person xác định bốn thuộc tính: firstname, lastName,
+    age và một phương thức getFullName(). Thuộc tính tuổi là tùy ý chọn, được biểu 
+    thị bằng ký hiệu ? . bất kỳ lớp hoặc đối tượng nào cài đặt Person giao diện đều 
+    phải có các thuộc tính và phương thức này.
+  4.4 Hybrid Types
+    Trong TS, kiểu kết hợp là kiểu kết hợp nhiều kiểu thành một kiểu duy nhất. Loại
+    kết quả được coi là sự kết hợp của các loại đó. điều này cho phép bạn chỉ định
+    rằng một giá trị có thể có nhiều loại, thay vì chỉ một loại.
+    Ví dụ bạn có thể tạo một loại kết hợp có thể chấp nhận một chuỗi hoặc một số:
+      type StringOrNumber = string | number;
+    Bạn cũng có thể sử dụng các loại kết hợp đểt tạo các loại phức tạp hơn có thể
+    biểu thị sự kết hợp của một loại giá trị khác nhau.
+      type Education = {
+        degree: string;
+        school: string;
+        year: number;
+      };
+
+      type User = {
+        name: string;
+        age: number;
+        email: string;
+        education: Education;
+      };
+
+5. Classes
+  5.1 Constructor Params
+    Trong TS, các tham số constructor có thể được khái báo bằng các công cụ sửa đổi 
+    truy cập (ví dụ public, private, protected) và/hoặc chú thích loại. Các tham số
+    sau đó được gán tự động cho các thuộc tính cùng tên trong hàm tạo và có thể được
+    truy cập trong lớp. VD:
+      class Example {
+        constructor(private name: string, public age: number) {}
+      }
+    Trong ví dụ này, hàm tạo có hai tham số: tên và tuổi có một công cụ sửa đôit truy
+    cập riêng, vì vậy nó chỉ có thể được truy cập trong lớp. Ví dụ age có công cụ sửa
+    đổi truy cập công khai, vì vậy nó cũng có thể được truy cập từ bên ngoài lớp.
+  5.2 Constructor Overloading
+    Trong TS, bạn có thể nạp chồng hàm tạo bằng cách sửa dụng nhiều đingj nghĩa hàm
+    tạo với các danh sách tham số khác nhau trong một lớp.
+    VD:
+      class Point {
+        // Overloads
+        constructor(x: number, y: string);
+        constructor(s: string);
+        constructor(xs: any, y?: any) {
+          // TBD
+        }
+      }
+    Lưu ý rằng, tương tự như nạp chồng hàm, chúng ta chỉ có một triển khai của hàm 
+    tạo và đó là chữ ký duy nhất bị quá tải.
+  5.3 Access Modifiers
+    Trong TS, Access Modifiers là từ khóa được dùng để kiểm soát khả năng hiển thị 
+    và khả năng truy cập của các thuộc tính và phương thức của lớp. Có ba công cụ 
+    sửa đổi truy cập trong TS:
+      - public: Đây là công cụ cửa đổi truy cập mặc đingj. Các thuộc tính và phương
+      thức được khai báo là công khai có thể truy cập từ mọi nơi, cả bên trong và bên 
+      ngoài lớp. 
+      - private: Các thộc tính và phương thức được khai báo là private chỉ có thể truy 
+      cập trong cùng một lớp. Chúng không thể truy cập được từ bên ngoài lớp.
+      - protected: Các thuộc tính và phương thức được khai báo là được bảo vệ có thể
+      được truy cập trong lớp và các lớp con. CHúng không thể truy cập được từ bên 
+      ngoài lớp và các lớp con của nó.
+    Công cụ sửa đổi truy cập trong TS cho phép bạn xác định mức độ hiển thị và khả 
+    năng truy cập của các thuộc tính và phương thức trong lớp của bạn, giúp mã của bạn
+    dễ bảo trì và an toàn hơn.
+  5.4 Abstract Classes
+    Các lớp trừu tượng trong TS là các lớp không thể tự khởi tạo và phải được phân lớp
+    bởi các lớp khác. Các lớp trừ tượng cung cấp một kế hoạch chi tiết cho các lớp khác
+    và có thể có các phương thức trừ tượng, là các phương thức không có phần thân và 
+    được ghi đè bởi lớp con. Các lớp này rất hữu ích để xác định một giao diện chung hoặc
+    chức năng cơ bản mà các lớp khác có thể kế thừa và xây dựng tên đó.
+      abstract class Animal {
+        abstract makeSound(): void;
+
+        move(): void {
+          console.log('moving...');
+        }
+      }
+
+      class Dog extends Animal {
+        makeSound(): void {
+          console.log('bark');
+        }
+      }
+  5.5 Inheritance vs Polymorphism
+    Kế thừa và Đa hình là hai khái niệm cơ bản trong lập trình hướng đối tượng và 
+    chúng cũng được hỗ trọ trong TS
+    Kế thừa đề cập đến một cơ chế trong đó có một lớp con kế thừa các thuộc tính và
+    phương thức từ lớp cha của nó. Điều này cho phép một lớp con sử dụng lại mã và 
+    hành vi của lớp cha của nó đồng thời bổ sung hoặc sửa đổi hành vi của chính nó. 
+    Trong TS tính kế thừa đạt được bằng cách sử dụng từ khóa mở rộng.
+    Tính đa hình đề cập đến khả năng của một đối tượng có nhiều dạng. Điều này cho 
+    phép các đối tượng của các lớp khác nhau được coi là đối tượng của một lớp chung
+    miễn là chúng chia sẻ một giao diện chung hoặc phân cấp thừa kế. Trong TS, tính
+    đa hình đạt được thông qua ghi đè phương thức và nạp chồng phương thức.
+      class Animal {
+        makeSound(): void {
+          console.log('Making animal sound');
+        }
+      }
+
+      class Dog extends Animal {
+        makeSound(): void {
+          console.log('Bark');
+        }
+      }
+
+      class Cat extends Animal {
+        makeSound(): void {
+          console.log('Meow');
+        }
+      }
+
+      let animal: Animal;
+
+      animal = new Dog();
+      animal.makeSound(); // Output: Bark
+
+      animal = new Cat();
+      animal.makeSound(); // Output: Meow
+  5.6 Method Overloading
+    Trong TS, phương thức ghi đè là một cơ chế trong đó một lớp con cung cấp một 
+    triển khai mới cho một phương thức đã được định nghĩa trong lớp cha của nó.
+    Điều này cho phép lớp con kế thừa hành vi của lớp cha, nhưng thay đổi hành vi 
+    của nó để phù hơpk với nhu cầu của chính nó.
+    Để ghi đè một phương thức trong TS, bạn cần sử dụng override từ khóa và chữ ký
+    của phương thức trong lớp con phải khớp chính xác với chữ ký của phương thức 
+    trong lớp cha.
+      class Animal {
+        makeSound(): void {
+          console.log('Making animal sound');
+        }
+      }
+
+      class Dog extends Animal {
+        makeSound(): void {
+          console.log('Bark');
+        }
+      }
+
+      let animal: Animal;
+
+      animal = new Dog();
+      animal.makeSound(); // Output: Bark
+    Trong ví dụ này, lớp Dog ghi đè phương thức makeSound được định nghĩa trong lớp
+    Animal và cung cấp cách triển khai của riêng nó. Khi phương thức makeSound được 
+    gọi trên một thể hiện của lớp Dog, nó sẽ sử dụng phần triển khai trong lớp Dog
+    hơn là phần tử trong lớp Animal.
+
+6. Generics
+  Generics trong TypeScript là một cách để viết mã có thể hoạt động với nhiều loại 
+  dữ liệu, thay vì bị giới hạn ở một loại dữ liệu. Generics cho phép bạn viết các 
+  hàm, lớp và giao diện nhận một hoặc nhiều tham số loại, đóng vai trò giữ chỗ cho 
+  các loại dữ liệu thực tế sẽ được sử dụng khi hàm, lớp hoặc giao diện được sử dụng.
+  6.1 Generic Types
+    Generic Types tròn TS cho phép bạn viết các đối tượng, hàm và lớp hoạt động với 
+    nhiều kiểu dữ liệu thay vì bị giới hạn trong một kiểu dữ liệu. Loại chung được 
+    xác định bằng cách sử dụng làm trình giữ chỗ cho một loại dữ liệu cụ thể. Kiểu dữ
+    liệu thực tế được chỉ định khi chức năng hoặc lớp được sử dụng.
+    Ví dụ sau đây về môttj hàm chung nhận một đối số duy nhất của bất kỳ loại dữ liệu
+    nào và trả về cùng một loại dữ liệu:
+      function identity<T>(arg: T): T {
+        return arg;
+      }
+      let output = identity<string>('Hello'); // type of output will be 'string'
+    Trong ví dụ này, identity hàm nhận một đối số duy nhất của bất kỳ loại dữ liệu 
+    nào trả về cùng một loại dữ liệu. Kiểu dữ liệu thực tế được chỉ định khi hàm được 
+    gọi bằng cách sử dụng <string> trước đối số Hello.
+    Generics cũng có thể được sử dụng với các lớp, giao diện và loại đối tượng, cho 
+    phép chúng cũng hoạt động với nhiều loại dữ liệu.
+    Ví dụ:
+      class GenericNumber<T> {
+        zeroValue: T;
+        add: (x: T, y: T) => T;
+      }
+
+      let myGenericNumber = new GenericNumber<number>();
+      myGenericNumber.zeroValue = 0;
+      myGenericNumber.add = function (x, y) {
+        return x + y;
+      };
+  6.2 Generic Constraints
+    Generic Constraints(Các ràng buộc chung) trong TS cho phép bạn chỉ định các yêu cầu
+    đối với các tham số loại được sử dụng trong một loại chung. Các ràng buộc này đảm 
+    bảo rằng tham số kiểu được sử dụng trong kiểu chung đáp ứng các yêu cầu nhất định.
+    Các ràng buộc được chỉ định bằng cách sử dụng từ khóa extends, theo sau là loại mà 
+    tham số loại phải mở rộng hoặc triển khai.
+      interface Lengthwise {
+        length: number;
+      }
+      function loggingIdentity<T extends Lengthwise>(arg: T): T {
+        // Now we know it has a .length property, so no more error
+        console.log(arg.length);
+        return arg;
+      }
+      loggingIdentity(3); // Error, number doesn't have a .length property
+      loggingIdentity({ length: 10, value: 3 }); // OK
+    Trong ví dụ này, Lengthwise giao diện định nghĩa một length thuộc tính. Hàm 
+    loggingIdentity sử dụng tham số loại chung T bị hạn chế bởi Lengthwise giao diện,
+    nghĩa là tham số loại phải mở rộng hoặc triển khai Lengthwise giao diện. Ràng buộc
+    này đảm bảo rằng thuộc tính độ dài có sẵn trên đối số được truyền cho hàm 
+    loggingIdentity.
+  
