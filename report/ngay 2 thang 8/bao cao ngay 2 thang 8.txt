@@ -1,0 +1,409 @@
+Các kiến thức liên quan đến TypeScript
+1. Utility Types
+  TypeScript cung cấp một số loại tiện ích có thể được sử dụng để thao tác và chuyển 
+  đổi các loại hiện có. Dưới đây là một số trong những cái phổ biến nhất:
+  1.1 Partial
+    Kiểu Partial trong TypeScript cho phép bạn đặt tất cả các thuộc tính của một kiểu
+    tùy chọn. Điều này hữu ích khi bạn cần tạo một đối tượng chỉ với một tập hợp con 
+    các thuộc tính của một loại hiện có.
+    Đây là một ví dụ về việc sử dụng loại Partial trong TypeScript:
+      interface User {
+        name: string;
+        age: number;
+        email: string;
+      }
+      function createUser(user: Partial<User>): User {
+        return {
+          name: 'John Doe',
+          age: 30,
+          email: 'john.doe@example.com',
+          ...user,
+        };
+      }
+      const newUser = createUser({ name: 'Jane Doe' });
+      console.log(newUser);
+      // Output: { name: 'Jane Doe', age: 30, email: 'john.doe@example.com' }
+  1.2 Pick
+    Pick xây dựng một loại bằng cách chọn tập hợp các thuộc tính Khóa (chuỗi ký tự 
+    hoặc liên kết của chuỗi ký tự) từ Type.
+      interface Todo {
+        title: string;
+        description: string;
+        completed: boolean;
+      }
+      type TodoPreview = Pick<Todo, 'title' | 'completed'>;
+      const todo: TodoPreview = {
+        title: 'Clean room',
+        completed: false,
+      };
+  1.3 Omit
+    Omit xây dựng một loại bằng cách chọn tất cả các thuộc tính từ Type và sau đó 
+    loại bỏ các Key (chuỗi ký tự hoặc liên kết của chuỗi ký tự).
+      interface Todo {
+        title: string;
+        description: string;
+        completed: boolean;
+        createdAt: number;
+      }
+      type TodoPreview = Omit<Todo, 'description'>;
+      const todo: TodoPreview = {
+        title: 'Clean room',
+        completed: false,
+        createdAt: 1615544252770,
+      };
+      type TodoInfo = Omit<Todo, 'completed' | 'createdAt'>;
+      const todoInfo: TodoInfo = {
+        title: 'Pick up kids',
+        description: 'Kindergarten closes at 5pm',
+      };
+  1.4 Readonly
+    Readonly xây dựng một loại với tất cả các thuộc tính của Type được đặt thành chỉ 
+    đọc, nghĩa là các thuộc tính của type đã xây dựng không thể được chỉ định lại.
+      interface Todo {
+        title: string;
+      }
+      const todo: Readonly<Todo> = {
+        title: 'Delete inactive users',
+      };
+      // Cannot assign to 'title' because it is a read-only property.
+      todo.title = 'Hello';
+  1.5 Record
+    Record xây dựng một loại đối tượng có khóa thuộc tính là Key và có giá trị thuộc 
+    tính là Type. Tiện ích này có thể được sử dụng để ánh xạ các thuộc tính của một 
+    loại sang một loại khác.
+      interface CatInfo {
+        age: number;
+        breed: string;
+      }
+      type CatName = 'miffy' | 'boris' | 'mordred';
+      const cats: Record<CatName, CatInfo> = {
+        miffy: { age: 10, breed: 'Persian' },
+        boris: { age: 5, breed: 'Maine Coon' },
+        mordred: { age: 16, breed: 'British Shorthair' },
+      };
+  1.6 Exclude
+    Exclude constructs là loại trừ khỏi UnionType tất cả các thành viên công đoàn có 
+    thể gán cho ExcludedMembers.
+      type T0 = Exclude<'a' | 'b' | 'c', 'a'>; // "b" | "c"
+      type T1 = Exclude<'a' | 'b' | 'c', 'a' | 'b'>; // "c"
+      type T2 = Exclude<string | number | (() => void), Function>; // string | number
+  1.7 Extract
+    Trích xuất cấu trúc một loại bằng cách trích xuất từ ​​Loại tất cả các thành viên 
+    công đoàn có thể gán cho Union.
+      type T0 = Extract<'a' | 'b' | 'c', 'a' | 'f'>;
+      //    ^ = type T0 = "a"
+  1.8 NonNullable
+    Non-Nullable xây dựng một loại bằng cách loại trừ null và undefined khỏi Type.
+      type T0 = NonNullable<string | number | undefined>;
+      // type T0 = string | number
+      type T1 = NonNullable<string[] | null | undefined>;
+      // type T1 = string[]
+  1.9 Parameters
+    Các tham số xây dựng một loại bộ từ các loại được sử dụng trong các tham số của 
+    một loại hàm Type.
+      type T0 = Parameters<() => string>;
+      // type T0 = []
+      type T1 = Parameters<(s: string) => void>;
+      // type T1 = [s: string]
+      type T2 = Parameters<<T>(arg: T) => T>;
+      // type T2 = [arg: unknown]
+      declare function f1(arg: { a: number; b: string }): void;
+      type T3 = Parameters<typeof f1>;
+      // type T3 = [arg: {
+      //     a: number;
+      //     b: string;
+      // }]
+      type T4 = Parameters<any>;
+      // type T4 = unknown[]
+      type T5 = Parameters<never>;
+      // type T5 = never
+      type T6 = Parameters<string>;
+      // ^ Type 'string' does not satisfy the constraint '(...args: any) => any'.
+      type T7 = Parameters<Function>;
+      // ^ Type 'Function' does not satisfy the constraint '(...args: any) => any'.
+  1.10 Return Type
+    Return Type về xây dựng một kiểu bao gồm kiểu trả về của function Type.
+      type T0 = ReturnType<() => string>;
+      // type T0 = string
+      type T1 = ReturnType<(s: string) => void>;
+      // type T1 = void
+      type T2 = ReturnType<<T>() => T>;
+      // type T2 = unknown
+      type T3 = ReturnType<<T extends U, U extends number[]>() => T>;
+      // type T3 = number[]
+      declare function f1(): { a: number; b: string };
+      type T4 = ReturnType<typeof f1>;
+      // type T4 = {
+      //     a: number;
+      //     b: string;
+      // }
+      type T5 = ReturnType<any>;
+      // type T5 = any
+      type T6 = ReturnType<never>;
+      // type T6 = never
+      type T7 = ReturnType<string>;
+      // ^ Type 'string' does not satisfy the constraint '(...args: any) => any'.
+      type T8 = ReturnType<Function>;
+      // ^ Type 'Function' does not satisfy the constraint '(...args: any) => any'.
+  1.11 Instance Type
+    Instance Type xây dựng một loại bao gồm loại cá thể của hàm xây dựng trong Type.
+      class C {
+        x = 0;
+        y = 0;
+      }
+
+      type T0 = InstanceType<typeof C>;
+      // type T0 = C
+
+      type T1 = InstanceType<any>;
+      // type T1 = any
+
+      type T2 = InstanceType<never>;
+      // type T2 = never
+
+      type T3 = InstanceType<string>;
+      // ^ Type 'string' does not satisfy the constraint 'abstract new (...args: any) => any'.
+
+      type T4 = InstanceType<Function>;
+      // ^ Type 'Function' does not satisfy the constraint 'abstract new (...args: any) => any'.
+  1.12 Awaited
+    Awaited dùng để mô hình hóa các hoạt động như chờ đợi trong các hàm không đồng 
+    bộ hoặc phương .then()thức trên Lời hứa - cụ thể là cách chúng mở khóa Lời hứa 
+    theo cách đệ quy.
+      type A = Awaited<Promise<string>>;
+      // type A = string
+
+      type B = Awaited<Promise<Promise<number>>>;
+      // type B = number
+
+      type C = Awaited<boolean | Promise<number>>;
+      // type C = number | boolean
+  
+2. Advanced Types
+  Các kiểu nâng cao trong TS là một tập hợp các cấu trúc kiểu nâng cao cho phép các hệ thống
+  kiểu phức tạp và biểu cảm hơn. Một số loại nâng cao được sử dụng phổ biến nhất trong TS bao
+  gồm: 
+  2.1 Mapped Types
+    Các lọa ánh xạ trong TS là một cách để tạo một loại mới dựa trên một loại hiện có,
+    trong đó mỗi thuộc tính của loại hiện có được chuyển đổi theo cách nào đó. Các loại
+    ánh xạ được khai báo bằng cách sử dụng kết hợp toán tử keyof và một loại ánh xạ tường
+    thuộc tính của loại hiện có sang một loại thuộc tính mới.
+    Ví dụ: sau đây là loại ánh xạ lấy một loại đối tượng và tạo một loại mới với tất cả
+    các thuộc tính của loại ban đầu nhưng với loại của chúng được thay đổi thành readonly:
+      type Readonly<T> = {
+        readonly [P in keyof T]: T[P];
+      };
+
+      let obj = { x: 10, y: 20 };
+      let readonlyObj: Readonly<typeof obj> = obj;
+    Trong ví dụ này, type Readonly được ánh xạ lấy một loại đối tượng T và tạo một loại
+    mới với tất cả các thuộc tính T nhưng loại của chúng được thay đổi thành readonly.
+    Toán tử keyof T được sử dụng để trích xuất tên của các thuộc tính của T, và T[P] cú
+    pháp được sử dụng để truy cập loại của từng thuộc tính T. Từ readonly khóa được sử 
+    dụng để tạo các thuộc tính của kiểu mới readonly.
+  2.2 Conditional Types
+    Các loại có điều kiện trong TypeScript là một cách để chọn loại dựa trên một điều 
+    kiện. Chúng cho phép bạn viết một loại tự động chọn một loại dựa trên các loại 
+    đầu vào của nó. Các loại có điều kiện được khai báo bằng cách sử dụng kết hợp từ 
+    infer khóa và loại kiểm tra một điều kiện và chọn loại dựa trên kết quả kiểm tra.
+    Ví dụ: sau đây là một loại điều kiện có hai loại và trả về loại của đối số thứ 
+    nhất nếu nó mở rộng đối số thứ hai và trả về loại của đối số thứ hai nếu ngược 
+    lại:
+      type Extends<T, U> = T extends U ? T : U;
+      type A = Extends<string, any>; // type A is 'string'
+      type B = Extends<any, string>; // type B is 'string'
+    Trong ví dụ này, loại điều kiện Mở rộng nhận hai loại T và U và trả về loại của 
+    đối số thứ nhất T nếu nó mở rộng đối số thứ hai Uvà loại của đối số thứ hai U 
+    nếu ngược lại. Cú pháp mở rộng T U được sử dụng để kiểm tra xem T extends U 
+    và ? T : U cú pháp được sử dụng để chọn loại Tnếu kiểm tra vượt qua và loại U 
+    khác.
+  2.3 Literal Types
+    Các kiểu chữ trong TypeScript là một cách để chỉ định chính xác một giá trị, 
+    thay vì chỉ một kiểu. Các loại chữ có thể được sử dụng để bắt buộc rằng một 
+    giá trị phải thuộc một loại cụ thể và một giá trị cụ thể. Các loại chữ được 
+    tạo bằng cách sử dụng một giá trị chữ, chẳng hạn như một chuỗi, số hoặc boolean, 
+    làm loại.
+    Ví dụ: sau đây là một loại chữ đại diện cho giá trị 42:
+      type Age = 42;
+      let age: Age = 42; // ok
+      let age: Age = 43; // error
+    Trong ví dụ này, Age kiểu chữ được tạo bằng cách sử dụng số 42 làm kiểu. Loại 
+    này sau đó có thể được sử dụng để bắt buộc rằng một giá trị phải thuộc loại 
+    number và có giá trị 42.
+  2.4 Template Literal Types
+    Các kiểu chữ mẫu trong TypeScript là một cách để thao tác các giá trị chuỗi dưới
+    dạng các kiểu. Chúng cho phép bạn tạo một kiểu dựa trên kết quả của thao tác 
+    hoặc nối chuỗi. Các kiểu chữ mẫu được tạo bằng cách sử dụng ký tự backtick (“) 
+    và các biểu thức thao tác chuỗi trong kiểu.
+    Ví dụ: sau đây là một kiểu chữ mẫu nối hai chuỗi:
+      type Name = `Mr. ` + string;
+      let name: Name = `Mr. Smith`;  // ok
+      let name: Name = `Mrs. Smith`;  // error
+    Trong ví dụ này, Name kiểu chữ mẫu được tạo bằng cách nối chuỗi "Mr. " với kiểu
+    string. Loại này sau đó có thể được sử dụng để bắt buộc rằng một giá trị phải là 
+    một chuỗi bắt đầu bằng "Mr. ".
+  2.5 Recursive Types
+    Các kiểu đệ quy trong TS là một cách xác định một kiểu tham chiếu chính nó. Các kiểu
+    đệ quy được sử dụng để xác định cấu trúc dữ liệu phức tạp, chẳng hạn như cây hoặc danh
+    sách được liên kết, trong đó một giá trị có thể chứa một hoặc nhiều giá trị cùng loại.
+    Ví dụ sau đây là một kiểu đệ quy đại diện cho mottj danh sách được liên kết:
+      type LinkedList<T> = T & { next: LinkedList<T> };
+      let list: LinkedList<number> = {
+        value: 1,
+        next: { value: 2, next: { value: 3, next: null } },
+      };
+    Trong ví dụ này, loại LinkedList được định nghĩa là loại mở rộng T và chứa thuộc tính
+    next cùng loại LinkedList<T>. Điều này cho phép chúng ta tạo ra một danh sách được
+    liên kết trong đó mỗi nút chưa một giá trị kiểu T và tham chiếu đến nút tiếp theo trong
+    danh sách.
+
+3. TypeScript Modules
+  Trong TypeScript, các mô-đun được sử dụng để sắp xếp và sử dụng lại mã. Có hai loại mô-đun 
+  trong TypeScript:
+    + Internal (Nội bộ)
+    + External (Bên ngoài)
+  Các mô-đun Internal được sử dụng để tổ chức mã trong một tệp và còn được gọi là không gian tên. 
+  Chúng được xác định bằng cách sử dụng từ khóa “không gian tên”.
+
+  Các mô-đun External được sử dụng để tổ chức mã trên nhiều tệp. Chúng được xác định 
+  bằng cách sử dụng từ khóa “xuất” trong một tệp và từ khóa “nhập” trong một tệp khác. 
+  Các mô-đun External trong TypeScript tuân theo các tiêu chuẩn mô-đun CommonJS hoặc 
+  ES.
+
+  3.1 External Modules
+    Trong TypeScript, External Modules cho phép bạn tổ chức và chia sẻ mã trên nhiều 
+    tệp. External Modules trong TypeScript tuân theo các tiêu chuẩn mô-đun CommonJS 
+    hoặc ES.
+
+    Đây là một ví dụ về cách bạn có thể sử dụng External Modules trong TypeScript:
+      // myModule.ts
+      export function doSomething() {
+        console.log('Doing something...');
+      }
+
+      // main.ts
+      import { doSomething } from './myModule';
+      doSomething(); // Output: "Doing something..."
+    Trong ví dụ này, chúng tôi sử dụng từ khóa “xuất” trong tệp “myModule.ts” để xuất 
+    hàm “doS Something”, làm cho hàm này có sẵn cho các tệp khác sử dụng.
+
+  3.2 Ambient Modules
+    Ambient Modules trong TypeScript được sử dụng để khai báo External Modules hoặc 
+    thư viện của bên thứ ba trong chương trình TypeScript. Ambient Modules cung cấp 
+    thông tin loại cho các mô-đun không có khai báo TypeScript nhưng có sẵn trong 
+    phạm vi toàn cầu.
+
+    Đây là một ví dụ về cách bạn có thể sử dụng Ambient Modules trong TypeScript:
+      // myModule.d.ts
+      declare module 'my-module' {
+        export function doSomething(): void;
+      }
+      // main.ts
+      import * as myModule from 'my-module';
+      myModule.doSomething();
+    Trong ví dụ này, chúng tôi khai báo một Ambient Module “my-module” trong tệp 
+    myModule.d.ts. Khai báo này cung cấp thông tin loại cho mô-đun “my-module”, 
+    bao gồm chức năng “doS Something” được xuất từ ​​mô-đun.
+
+  3.3 Namespaces
+    Trong TS, namespaces được sử dụng để tổ chức và chia sẻ mã trên nhiều tiệp.
+    Không gian tên cho phép bạn nhóm chức năng liên quan thành một đơn vị duy nhất 
+    và ngăn xung đột đặt tên.
+    Đây là một ví dụ về cách bạn có thể sử dụng các không gian tên trong TS:
+      // myNamespace.ts
+      namespace MyNamespace {
+        export function doSomething() {
+          console.log('Doing something...');
+        }
+      }
+
+      // main.ts
+      /// <reference path="myNamespace.ts" />
+      MyNamespace.doSomething(); // Output: "Doing something..."
+    Trong ví dụ này, chúng tôi sử dụng từ khóa namespace trong tệp "myNamespace.ts"
+    để xác định không gian tên "MyNamespace". Trong không gian tên , chúng tôi xuất một
+    hàm "doSomething".
+  3.4 Namespace Augmentation
+    Trong TS, Namespace Augmentation là một cách để mở rộng hoặc sửa đổi các không 
+    gian tên hiện có. Điều này hữu ích khi bạn muốn thêm chức năng mới vào các không gian
+    tên hiện có hoặc để sửa các khai báo bị thiếu hoặc không chính xác trong thư viện 
+    của bên thứ ba.
+    Đây là ví dụ về cách bạn có thể tăng cường không gian tên trong TS:
+      // myModule.d.ts
+      declare namespace MyModule {
+        export interface MyModule {
+          newFunction(): void;
+        }
+      }
+
+      // main.ts
+      /// <reference path="myModule.d.ts" />
+      namespace MyModule {
+        export class MyModule {
+          public newFunction() {
+            console.log('I am a new function in MyModule!');
+          }
+        }
+      }
+
+      const obj = new MyModule.MyModule();
+      obj.newFunction(); // Output: "I am a new function in MyModule!"
+    
+    Trong ví dụ này, chúng tôi sử dụng tính năng tăng cường không gian tên để thêm 
+    chức năng mới “newFunction” vào không gian tên “MyModule”. Điều này được thực 
+    hiện trong tệp khai báo myModule.d.ts bằng cách khai báo một giao diện mới 
+    “MyModule” trong không gian tên “MyModule” và thêm chức năng “newFunction” vào 
+    giao diện đó.
+
+  3.5 Global Augmentation
+    Trong TS, Global Augmentation là một cách để thêm các khai báo vào phạm vi toàn cầu.
+    Điều này hữu ích khi bạn muốn thêm chức năng mới vào các thư viện hiện có hoặc để 
+    tăng cường các loại tích hợp sẵn trong TS.
+    Đây là một ví dụ về cách bạn có thể sử dụng tính năng tăng cường toàn cầu trong TS:
+      // myModule.d.ts
+      declare namespace NodeJS {
+        interface Global {
+          myGlobalFunction(): void;
+        }
+      }
+
+      // main.ts
+      global.myGlobalFunction = function () {
+        console.log('I am a global function!');
+      };
+
+      myGlobalFunction(); // Output: "I am a global function!"
+
+    Trong ví dụ này, chúng tôi khai báo một không gian tên mới “NodeJS” và thêm giao diện 
+    “Global” vào đó. Trong giao diện “Global”, chúng tôi khai báo một chức năng mới 
+    “myGlobalFunction”.
+
+4.Ecosystem
+  4.1 Formatting
+    Prettier là một định dạnh mã được đánh giá cao với sự hỗ trợ cho JS, HTML, CSS, YAML,
+    Markdown, GraphQL Schemas. Cho đến nay, lý do lớn nhất để áp dụng Prettier là để ngăn
+    chặn tất cả các cuộc tranh luận đang diễn ra về phong cách.
+  4.2 Linting
+    Với ESLint, bạn có thể áp đạt tiêu chuẩn viết mã bằng cách sử dụng một bộ quy tắc 
+    độc lập nhất định
+  4.3 Useful Packages
+    TS có một hệ sinh thái lowns các gói có thể được sử dụng để mở rộng ngôn ngữ hoặc
+    thêm các chức năng cho sự án của bạn. Dưới đây là danh sách một số gói hữu ích nhất:
+      + zod: Thư viện xác thực dữ liệu đầu tiên của TS
+      + ts-morph: API đầu tiên của TS để thao tác mã TS
+      + ts-node: Thực thi TypeScript và REPL cho node.js
+      + ts-jest: Một trình biến áp Jest có hỗ trợ bản đồ nguồn cho phép bạn sử dụng Jest 
+      để kiểm tra các dự án được viết bằng TypeScript.
+      + typesync: Cài đặt các kiểu TypeScript bị thiếu cho các phần phụ thuộc trong gói.json 
+      của bạn.
+      + tsd: Trình quản lý định nghĩa TypeScript
+      + type-festival: Tập hợp các loại TypeScript thiết yếu.
+  4.4 Build Tools
+    Trình chạy tác vụ tự động thực thi các lệnh và thực hiện các quy trình đằng sau 
+    hậu trường. Điều này giúp tự động hóa quy trình làm việc của bạn bằng cách thực 
+    hiện các tác vụ nhàm chán, lặp đi lặp lại mà nếu không bạn sẽ lãng phí rất nhiều 
+    thời gian để lặp lại chính mình.
+
+    Các cách sử dụng phổ biến của trình chạy tác vụ bao gồm nhiều tác vụ phát triển, 
+    chẳng hạn như: quay vòng máy chủ phát triển, biên dịch mã (ví dụ: SCSS sang CSS), 
+    chạy linters, phân phát tệp từ một cổng cục bộ trên máy tính của bạn, v.v.!
