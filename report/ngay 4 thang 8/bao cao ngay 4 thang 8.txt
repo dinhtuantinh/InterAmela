@@ -1,0 +1,115 @@
+Tìm hiểu các kiến thức liên quan đến TypeScript 
+1. Ưu nhược điểm của TypeScript
+    1.1. Ưu điểm
+        - TypeScript thật sự thuận tiện và hoàn toàn miễn phí
+            Đối với loại ngôn ngữ lập trình tĩnh như TypeScript, tất cả những số liệu, thông số của bạn
+            sẽ dễ dàng được lấy hơn nhờ IDE và trinhg biên dịch.
+            TypeScript hỗ trợ quá trình tìm kiếm giúp bạn tiết kiệm thời gian kiểm tra lại code. không cần
+            thông qua bất cữ một ai để có thể tìm thông tin dữ liệu, ngoài ra TypeScript làm giảm phần
+            trăm va chạm lỗi trong thời gian vận hành.
+            Ngoài ra, đây cũng là một trong những phần mềm nôit trội được Microsoft hỗ trợ hoàn toàn
+            miễn phí.
+        - Thao tác nhanh chóng và đơn giản hơn
+            Ngôn ngữ TypeScript có tho tác khá đơn giản, tiết kiệm thời gian hơn nhưng lại đem đến kết 
+            quả tốt đến bất ngờ, nó khắc phục tình trạng xuất hiện lỗi và dễ đọc hơn.
+            Cụ thể là, đối với ngôn ngữ thông thường người dùng thường thao tác theo các bước như:
+                + Restart lại hàm. tạo đối số, hoàn thành đoạn mã
+                + Sau khi apply hết các đoạn mã, công cụ cần thiết thì cho vận hành
+                + Trong quá trình vận hành nếu phất hiện lỗi thì sửa chữa lại.
+        - Tái cấu trúc
+            Chắc chắn trong quá trình viết code, các lập trình viên sẽ thường xuyên mắc phải nhiều lỗi nhỏ
+            và cần chỉnh sửa, việc sử dụng TypeScript sẽ giúp bước chỉnh sửa code trở lên dễ dàng hơn
+            nhờ hiệu quả của lệnh Rename Symbol/Find All Occurrences.
+            Đối với các ngôn ngữ khác, khi muốn chỉnh sửa chi tiết nào đó thường thì phải thay đổi luôn những
+            tập tin khác nếu có liên quan hoặc sử dụng RegEx
+            Trong trường hợp người dùng TypeScript muốn nâng cấp hệ thống của mình(thêm hoặc xóa 
+            thuộc tính, đổi tên,...) thì TypeScript sẽ giúp bạn tái cấu trúc lại sao cho phù hợp với nhu cầu
+            tìm kiếm của bạn mà không gây náo loạn trong hệ thống. Trong trường hợp code bạn
+            không match được bất cứ dữ liệu nào thì sẽ được báo đến bạn ngay để được xử lý ổn thỏa.
+        - Giảm tỷ lệ mắc lỗi trong hệ thống
+            Nhờ vào việc cảnh báo lỗi ngay khi viết code, nên tỷ lệ mắc lỗi hệ thống khi sử dụng
+            TypeScript khá thấp, Type sẽ trả lại giá trị null hoặc gợi ý thay đổi chỉnh sửa. Mỗi lần
+            chỉnh sửa sau khi được TypeScript báo lỗi phần trăm hệ thống hoạt động mà không mắc
+            phải lỗi là rất cao, có thể dễ dàng thấy được TypeScript giúp người dùng tiết kiệm không ít thời gian 
+            để sửa lỗi.
+        - Hạn chế thử nghiệm Boilerplate
+            Với quy trình kiểm tra và báo lỗi tự động ngay khi code, khi bạn đã chắc rằng các biến dữ 
+            liệu của mình nằm ở đúng chỗ thì bạn không cần phải lo hệ thống không vận hành hoặc không
+            cần phải kiểm tra lại nữa.
+            Điều này sẽ giúp bạn tiết kiệm thời gian, không đặt quá nhiều chú ý vào những tao tác đơn giản
+            cho việc kiểm tra mà có thể tận dụng thời gian tối ưu hơn bằng cách kiểm tra chất lượng
+            logic của hệ thống.
+            Việc hạn chế được các bước thử nghiệm sẽ giúp tiết kiệm được thời gian, nâng cao hiệu quả 
+            công việc của các lập trinhg viên.
+        - Hợp nhất mã đơn giản
+            Sau khi hoàn thiện được một đoạn code và cho chúng chạy thử nghiệm, có thể ngay trong môi
+            trường đó mọi thứ đều hoạt động trơn tru, nhung bạn có chắc được đoạn code đó cũng sẽ hoạt động 
+            tốt khi ở trong môi trường điều kiện khác?
+            Một trong những điểm mạnh của TS là bạn có thể vừa hợp nhất mã một cáchc đơn giản để có 
+            thể dễ dàng kiểm tra đánh giad đoạn mã bạn vừa mới cho ra đời kia bằng cách sửa dụng Typedef-kiểm tra 
+            biên dịch
+        - Hỗ trợ tối ưu hóa quy trình làm việc
+            TypeScript sẽ không khuyến khích người dùng nhảy bước, thực hiện sai thao tác. TS
+            khuyến khích người dùng đưa ra quyết định về kiểu dữ liệu khi sử dụng ngôn ngữ kiểu tĩnh
+            trước khi thực hiện thao tác. các bước tiếp theo. Chính vì những quy luật như thế sẽ giúp cho 
+            các lập trình viên tối ưu được quy trình làm việc hơn.
+
+    1.2. Nhược điểm
+        Bất kỳ ngôn ngữ nào cũng có điểm yếu và hạn chế của nó, và TS cũng vậy, điểm hạn chế
+        của TS là:
+            - Bắt buộc dùng biên dịch
+                Để có thể vận hành một tệp TS với đuôi .js trên nền tảng Node.js bạn phải 
+                dùng trình biên dịch đẻ có thể sử dụng.
+            - Bước thiết lập công kềnh
+                Trước khi có theer sử dụng được TypeScript, bạn phải đảm bảo rằng Node.js, trình thử
+                nghiệm webpack đều có thể hoạt động với tS, nếu không thì bạn sẽ không sử dụng được.
+                Bên cạnh đó, mỗi khi bạn apply thêm bất kỳ library nào như Redux, React và Styled-Component 
+                thì bạn cũng phải thêm Typedef vào
+            - Chỉ là phần ngôn ngữ mở rộng hỗ trợ
+                Sau cùng, chức năng TS cũng chỉ là để biên dịch về JS, nó không phải là 
+                một ngôn ngữ có thể vận hành độc lập và nó cũng đồng thời không thể thay thế được vai trò
+                của JS. Chức năng của TS bị giới hạn bởi chức năng của JS, TS chỉ được
+                nâng cấp từ điểm yếu của JS.
+                Chỉ với mỗi TS, người dùng không thể nào hoàn thiện được các côgn đoạn của dự án,
+                công dụng của TS chỉ thực sự nổi bật khi được kết hợp nhuần nguyễn và tối ưu với các
+                ngon ngữ, nền tảng và tool khác.
+            - TypeScript có thực sự là một mã nguồn mở?
+                Có nhiều luồng ý kiến cho rằng TypeScript là một mã nguồn mở, và đó cũng là một trong những 
+                lý do họ thích sử dụng TS. Nhưng liệu cddos có phải sự thật?
+                Đúng! TS thực sự là một mã nguồn mở nhưng nó vẫn nằm dưới sự chi phối của
+                Microsoft - công ty phần mềm nổi tiếng về các phiên bản phần mềm độc quyền.
+                Nhiều người dự đoán, TS là một sản phẩm marketing của Microsoft dùng để thu hút
+                người dùng về công năng và sự miễn phí. Tuy nhiên sau cùng, việc Microsoft và người dùng hoàn
+                toàn bị động trong chuyện này.
+
+2. Lợi ích của việc sử dụng TypeScript trong phát triển web
+    TypeScript cung cấp nhiều lợi thế hơn JavaScript truyền thống khi phát triển web. Dưới đây là một số lý do 
+    thuyết phục nhất khiến nhiều nhà phát triển chọn TypeScript cho dự án của họ:
+    2.1: Bảo trì mã nâng cao: TypeScript, với các tính năng kiểm tra loại nghiêm ngặt, đảm bảo
+    rằng các nhà phát triển tuân thủ các tiêu chuẩn viết mã cụ thể. Điều này dẫn đến mã
+    sạch hơn, nhất uqans hơn, dễ bảo trì và gỡ lỗi hơn trên toàn bộ dự án.
+    2.2 Phát hiện lỗi được cải thiện: Kiểu gõ tĩnh của TypeScript cho phép các nhà phát triển phát hiện sớm các 
+    lỗi tiềm ẩn trong quá trình phát triển . Bằng cách gán các loại cụ thể cho các biến và tham số chức năng, nhà 
+    phát triển có thể xác định các vấn đề liên quan đến loại trong quá trình biên dịch mã, giảm thiểu lỗi thời 
+    gian chạy.
+    2.3 Năng suất của nhà phát triển tốt hơn: Hệ thống loại của TypeScript cung cấp cho nhà phát triển ngữ cảnh và 
+    thông tin tốt hơn về mã, cải thiện trải nghiệm viết mã và giảm thời gian phát triển. TypeScript cũng có sự hỗ 
+    trợ tuyệt vời từ Môi trường phát triển tích hợp (IDE) phổ biến, cung cấp các tính năng như tự động hoàn thành, 
+    khả năng tái cấu trúc tốt hơn và điều hướng mã được cải thiện.
+    2.4 Khả năng mở rộng: Với hệ thống loại của TypeScript, các nhà phát triển có thể dễ dàng xây dựng các ứng dụng 
+    quy mô lớn hơn bằng cách xác định các loại, lớp và giao diện tùy chỉnh để phác thảo các cấu trúc mã phức tạp. 
+    Điều này thúc đẩy tổ chức tốt hơn và hiểu biết về cơ sở mã, cuối cùng dẫn đến các ứng dụng có thể mở rộng hơn.
+    2.5 Hệ sinh thái phong phú: TypeScript có một cộng đồng đang phát triển nhanh chóng và một hệ sinh thái phong phú, 
+    bao gồm các định nghĩa kiểu cho các thư viện và khung phổ biến khác nhau (ví dụ: React, Angular, Vue). Việc có 
+    truy cập vào các thư viện thân thiện với TypeScript sẽ đẩy nhanh quá trình phát triển và thúc đẩy trải nghiệm mã 
+    hóa nhất quán hơn.
+
+    2.6 Lợi ích mang lại cho ReactJS
+        Mặc dù React không được xây dựng rõ ràng bằng TypeScript, nhưng cộng đồng React vẫn duy trì các thư viện và 
+        công cụ thân thiện với TypeScript. Hỗ trợ này khuyến khích sử dụng TypeScript với các dự án React, cho phép 
+        các nhà phát triển gặt hái những lợi ích từ việc gõ tĩnh của TypeScript và trải nghiệm phát triển được cải 
+        thiện.
+        Một số thư viện phổ biến tương thích với TypeScript dành cho React bao gồm:
+            - react-redux - để kết nối các thành phần React với cửa hàng Redux với loại an toàn
+            - react-router - để tạo điều hướng và định tuyến an toàn trong các ứng dụng React
+            - formik - để quản lý biểu mẫu trong ứng dụng React có hỗ trợ TypeScript
